@@ -37,7 +37,7 @@ html {
 }
 
 .web_logo img {
-    width: 200px;
+    width: 170px;
 }
 
 .login_block {
@@ -122,6 +122,7 @@ html {
     width: 100%;
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 .input_container input {
@@ -231,6 +232,81 @@ html {
     }
 }
 
+
+@media (max-width:550px) {
+    .web_logo img {
+        width: 100px;
+    }
+
+    .web_logo {
+        font-size: 12px;
+    }
+
+    .login_block {
+        height: 70vh;
+        left: 10%;
+        top: 17%;
+    }
+
+    .login_block {
+        height: 62vh;
+        margin-top: 0;
+        top: 17%;
+    }
+
+    #login_text h2 {
+        font-weight: 500;
+        font-size: 26px;
+        margin-top: 13px;
+    }
+
+    #login_text {
+        gap: 10px;
+    }
+
+    #login_text p {
+        font-size: 11px;
+    }
+
+    #input_container {
+        padding: 0 4px;
+    }
+
+    .form-control label {
+        font-size: 14px;
+    }
+
+    .input_container input {
+        padding: 8px 5px;
+        margin-left: 5px;
+        font-size: 12px;
+        width: 76%;
+    }
+
+    .input_container span {
+        font-size: 15px;
+    }
+
+    .input_container i.ri-eye-line {
+        right: 10px;
+        top: 5px;
+    }
+
+    #form a {
+        font-size: 13px;
+    }
+
+    #form button {
+        padding: 6px;
+        font-size: 16px;
+    }
+
+    .register_link {
+        font-size: 12px;
+    }
+
+}
+
 @media (max-height:700px) {
 
     .login_nav {
@@ -247,12 +323,10 @@ html {
     }
 
     .login_block {
-        grid-template-columns: 1fr;
         height: 78vh;
         margin-top: 0;
         position: absolute;
         top: 17%;
-
     }
 
     #login_text h2 {
