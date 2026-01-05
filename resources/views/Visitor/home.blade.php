@@ -9,42 +9,227 @@
 @endsection
 
 @section('content')
-
-    <nav>
-        <div class="web_logo">
-            <img src="images/logo.png" alt="">
-        </div>
-        <div class="nav_item">
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Rooms</a></li>
-                <li><a href="">My Booking</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href=""><i class="fa-regular fa-circle-user"></i></a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="body_part">
-        <div class="home_top_part">
-            <div class="home_image">
-                <img src="images/hotel_room1.png" alt="">
-            </div>
-            <div class="home_text">
-                <div class="home_text_text">
-                    <h1 class="headline">Experience Luxury <br> and Comfort</h1>
-                    <p>Enjoy exceptional service and elegant accomodations.</p>
+    @include('Layout/nav')
+    <section>
+        <div class="body_part">
+            <div class="home_top_part">
+                <div class="home_image">
+                    <img src="{{ asset('images/hotel_room1.png') }}" alt="">
                 </div>
-                <button type="button">Book Now</button>
+                <div class="home_text">
+                    <div class="home_text_text">
+                        <h1 class="headline">Experience Luxury <br> and Comfort</h1>
+                        <p>Enjoy exceptional service and elegant accomodations.</p>
+                    </div>
+                    <button type="button">
+                        <a href="{{ route('hotel.rooms') }}">Check Availability</a>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="rooms_part">
-            <div class="room_title">
-                <h1>Rooms</h1>
-            </div>
-            <div class="room_card">
+            <div class="rooms_part">
+                <div class="room_title">
+                    <h1></h1>
+                </div>
+                <div class="room_card">
 
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+    <section>
+        <div class="featured_room">
+            <div class="room_text">
+                Featured Room
+            </div>
+
+            <div class="room_card">
+                @foreach ($rooms as $room)
+                    <div class="deluxe_room booking_room">
+                        <div class="booking_image">
+                            @if ($room->status == 'available')
+                                <div class="label {{ $room->status }}">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                    <p>
+                                        {{ ucfirst($room->status) }}
+                                    </p>
+                                </div>
+                            @elseif($room->status == 'booked')
+                                <div class="label {{ $room->status }}">
+                                    <i class="fa-regular fa-circle-xmark"></i>
+                                    <p>
+                                        {{ ucfirst($room->status) }}
+                                    </p>
+                                </div>
+                            @else
+                                <div class="label {{ $room->status }}">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                    <p>
+                                        {{ ucfirst($room->status) }}
+                                    </p>
+                                </div>
+                            @endif
+                            <img src="{{ asset('storage/' . $room->image) }}" alt="">
+                        </div>
+                        <div class="booking_text">
+                            <div class="booking_title">
+                                {{ $room->room_name }}
+                            </div>
+                            <div class="booking_feature">
+                                <ul>
+                                    <li><i class="ri-wifi-fill"></i>
+                                        <p>Free Wi-Fi</p>
+                                    </li>
+                                    <li><i class="ri-customer-service-2-line"></i>
+                                        <p>24x7 Support</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="booking_price">
+                                <div class="booking_price_price">
+                                    ₹{{ $room->price_per_night }}
+                                </div>
+                                <div class="booking_price_per_night">
+                                    / Night
+                                </div>
+                            </div>
+                            <div class="booking_detail">
+                                <a href="{{ route('room.detail', $room) }}">
+                                    <button>
+                                        View Detail
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="hotel_feature">
+            <div class="feature_text">
+                Why Choose Us
+            </div>
+            <div class="feature_cards">
+                <div class="wifi_card card">
+                    <div class="icon">
+                        <i class="ri-wifi-fill"></i>
+                    </div>
+                    <div class="feature_icon_text">
+                        Free Wi-Fi
+                    </div>
+                    <div class="icon_text">
+                        <p>There are nothing to say Now.</p>
+                    </div>
+                </div>
+                <div class="wifi_card card">
+                    <div class="icon">
+                        <i class="ri-customer-service-2-line"></i>
+                    </div>
+                    <div class="feature_icon_text">
+                        24x7 Support
+                    </div>
+                    <div class="icon_text">
+                        <p>There are nothing to say Now.</p>
+                    </div>
+                </div>
+                <div class="wifi_card card">
+                    <div class="icon">
+                        <i class="ri-hotel-line"></i>
+                    </div>
+                    <div class="feature_icon_text">
+                        Luxury Rooms
+                    </div>
+                    <div class="icon_text">
+                        <p>There are nothing to say Now.</p>
+                    </div>
+                </div>
+                <div class="wifi_card card">
+                    <div class="icon">
+                        <i class="ri-bookmark-line"></i>
+                    </div>
+                    <div class="feature_icon_text">
+                        Best Price Gaurntee
+                    </div>
+                    <div class="icon_text">
+                        <p>There are nothing to say Now.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="amenities">
+            <div class="amenities_main_title">
+                Our Amenities
+            </div>
+            <div class="amenities_cards">
+                <div class="amenities_card">
+                    <div class="amenities_image">
+                        <img src="{{ asset('images/amenities.png') }}" alt="">
+                    </div>
+                    <div class="amenities_text">
+                        <div class="amenities_title">
+                            Swimming Pool
+                        </div>
+                        <div class="amenities_text">
+                            There is nothing to Say about the swimming pool and nothing is bad there.
+                        </div>
+                    </div>
+                </div>
+                <div class="amenities_card">
+                    <div class="amenities_image">
+                        <img src="{{ asset('images/dinning.png') }}" alt="">
+                    </div>
+                    <div class="amenities_text">
+                        <div class="amenities_title">
+                            Clean Diging
+                        </div>
+                        <div class="amenities_text">
+                            There is nothing to Say about the swimming pool and nothing is bad there.
+                        </div>
+                    </div>
+                </div>
+                <div class="amenities_card">
+                    <div class="amenities_image">
+                        <img src="{{ asset('images/fitness.png') }}" alt="">
+                    </div>
+                    <div class="amenities_text">
+                        <div class="amenities_title">
+                            Fitness Club
+                        </div>
+                        <div class="amenities_text">
+                            There is nothing to Say about the swimming pool and nothing is bad there.
+                        </div>
+                    </div>
+                </div>
+                <div class="amenities_card">
+                    <div class="amenities_image">
+                        <img src="{{ asset('images/spa.png') }}" alt="">
+                    </div>
+                    <div class="amenities_text">
+                        <div class="amenities_title">
+                            SPA & Wellness
+                        </div>
+                        <div class="amenities_text">
+                            There is nothing to Say about the swimming pool and nothing is bad there.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="footer">
+            <div class="footer_text">
+                Ready to Experience Comfort Like Never Before?
+            </div>
+            <div class="footer_booking_btn">
+                <button>
+                    <a href="{{ route('hotel.rooms') }}">Book Your Stay</a>
+                </button>
+            </div>
+        </div>
+    </section>
 
 @endsection
