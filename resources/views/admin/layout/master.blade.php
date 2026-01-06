@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/admin/sidebar.js', 'resources/css/admin/layout/sidebar.css',
-    'resources/css/admin/layout/master.css', 'resources/css/admin/rooms.css', 'resources/js/admin/rooms.js'])
+    'resources/css/admin/layout/master.css', 'resources/css/admin/rooms.css', 'resources/js/admin/rooms.js', 'resources/css/admin/booking.css', 'resources/js/admin/booking.js'])
 </head>
 
 <body>

@@ -28,3 +28,6 @@ Route::post('admin/room/store', [RoomController::class, 'store'])->name('admin.r
 Route::get('admin/room/{room}/edit',[RoomController::class, 'edit'])->name('admin.rooms.edit');
 Route::put('admin/room/{room}',[RoomController::class, 'update'])->name('admin.rooms.update');
 Route::delete('admin/room/delete/{id}',[RoomController::class, 'destroy'])->name('admin.rooms.delete');
+
+Route::get('/admin/booking', [BookingController::class, 'index'])->name('admin.booking');
+Route::delete('admin/booking/delete/{id}',[BookingController::class, 'destroy'])->name('admin.booking.delete');

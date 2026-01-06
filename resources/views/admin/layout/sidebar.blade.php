@@ -6,18 +6,22 @@
 
     <ul class="nav-list">
         <li>
-            <a href="{{ route('admin.rooms') }}" class="{{ request()->routeIs('admin.rooms*') ? 'active' : '' }} sidebar-link" data-url="{{ route('admin.rooms') }}">
+            <a href="{{ route('admin.rooms') }}"
+                class="{{ request()->routeIs('admin.rooms*') ? 'active' : '' }} sidebar-link"
+                data-url="{{ route('admin.rooms') }}">
                 <i class="ri-hotel-bed-line"></i>
                 <span class="links_name">Rooms</span>
             </a>
             <span class="tooltip">Rooms</span>
         </li>
         <li>
-            <a>
+            <a href="{{ route('admin.booking') }}"
+                class="{{ request()->routeIs('admin.booking*') ? 'active' : '' }} sidebar-link"
+                data-url="{{ route('admin.booking') }}">
                 <i class="ri-shopping-cart-2-line"></i>
-                <span class="links_name">Purchase</span>
+                <span class="links_name">Booking</span>
             </a>
-            <span class="tooltip">Purchase</span>
+            <span class="tooltip">Booking</span>
         </li>
         <li>
             <a>
