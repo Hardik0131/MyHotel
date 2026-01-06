@@ -14,8 +14,8 @@
                     Our Rooms
                 </div>
                 <div class="room_page_text_two" style="font-size:18px;">
-                    @if($filtered)
-                        Available Rooms in {{ $checkIn }} to {{ $checkOut}}
+                    @if ($filtered)
+                        Available Rooms in {{ $checkIn }} to {{ $checkOut }}
                     @endif
                 </div>
                 <div class="rooms_page_small_text">
@@ -26,27 +26,29 @@
                 @foreach ($rooms as $room)
                     <div class="delux_room rooms_page_booking_room">
                         <div class="rooms_page_booking_image">
-                            @if ($room->status == 'available')
-                                <div class="label {{ $room->status }}">
-                                    <i class="fa-regular fa-circle-check"></i>
-                                    <p>
-                                        {{ ucfirst($room->status) }}
-                                    </p>
-                                </div>
-                            @elseif($room->status == 'booked')
-                                <div class="label {{ $room->status }}">
-                                    <i class="fa-regular fa-circle-xmark"></i>
-                                    <p>
-                                        {{ ucfirst($room->status) }}
-                                    </p>
-                                </div>
-                            @else
-                                <div class="label {{ $room->status }}">
-                                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                                    <p>
-                                        {{ ucfirst($room->status) }}
-                                    </p>
-                                </div>
+                            @if ($filtered)
+                                @if ($room->status == 'available')
+                                    <div class="label {{ $room->status }}">
+                                        <i class="fa-regular fa-circle-check"></i>
+                                        <p>
+                                            {{ ucfirst($room->status) }}
+                                        </p>
+                                    </div>
+                                @elseif($room->status == 'booked')
+                                    <div class="label {{ $room->status }}">
+                                        <i class="fa-regular fa-circle-xmark"></i>
+                                        <p>
+                                            {{ ucfirst($room->status) }}
+                                        </p>
+                                    </div>
+                                @else
+                                    <div class="label {{ $room->status }}">
+                                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                                        <p>
+                                            {{ ucfirst($room->status) }}
+                                        </p>
+                                    </div>
+                                @endif
                             @endif
                             <img src="{{ asset('storage/' . $room->image) }}" alt="">
                         </div>
@@ -76,11 +78,12 @@
                                 </div>
                             </div>
                             <div class="rooms_page_booking_detail">
-                                <a href="{{ route('hotel.room.detail', [
-                                $room,
-                                'check_in_date' => request('check_in_date'),
-                                'check_out_date' => request('check_out_date'),
-                                ]) }}">
+                                <a
+                                    href="{{ route('hotel.room.detail', [
+                                        $room,
+                                        'check_in_date' => request('check_in_date'),
+                                        'check_out_date' => request('check_out_date'),
+                                    ]) }}">
                                     <button>
                                         View Detail
                                     </button>
