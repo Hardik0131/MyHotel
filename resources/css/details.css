@@ -111,12 +111,12 @@
     font-weight: 500;
 }
 
-.detail_page_book_now{
+.detail_page_book_now {
     position: relative;
     display: inline-block;
 }
 
-.tooltip{
+.tooltip {
     position: absolute;
     width: fit-content;
     bottom: -40px;
@@ -135,18 +135,28 @@
     transition: 0s;
 }
 
-.detail_page_book_now:hover .tooltip{
+.detail_page_book_now:hover .tooltip {
     opacity: 1;
     pointer-events: auto;
     transition: all 0.4s ease;
 }
 
-.detail_page_book_now.booked button,
-.detail_page_book_now.maintenance button {
+.detail_page_book_now.booked button.book_btn,
+.detail_page_book_now.maintenance button.book_btn {
     background-color: rgb(255, 160, 101);
 }
 
-.detail_page_book_now button {
+.detail_page_book_now button.book_btn {
+    background-color: #f76700;
+    color: #fff;
+    padding: 10px 40px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-wrap: nowrap;
+    cursor: pointer;
+}
+
+.detail_page_book_now a .check_avail {
     background-color: #f76700;
     color: #fff;
     padding: 10px 40px;
@@ -202,7 +212,7 @@
 }
 
 @media (max-width:1020px) {
-    .booking_detail_page_about_price{
+    .booking_detail_page_about_price {
         text-wrap: nowrap;
     }
 }

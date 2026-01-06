@@ -80,11 +80,29 @@
                         </div>
                     </div>
                     <div class="detail_page_book_now {{ $room->status }}">
-                        <button class="book_btn">Book Now</button>
-                        @if($room->status == 'booked')
-                            <span class="tooltip">This room is not available. It's is Booked.</span>
-                        @elseif($room->status == 'maintenance')
-                            <span class="tooltip">This room is not available due to maintenance.</span>
+                        @if ($filtered)
+                            <a href="{{ route('hotel.room.booking', [
+                                    'room' => $room->slug,
+                                    'check_in_date' => request('check_in_date'),
+                                    'check_out_date' => request('check_out_date'),
+                                ]) }}">
+                                @if ($room->status == 'booked')
+                                    <button class="book_btn" disabled>Book Now</button>
+                                @elseif($room->status == 'maintenance')
+                                    <button class="book_btn" disabled>Book Now</button>
+                                @else
+                                    <button class="book_btn">Book Now</button>
+                                @endif
+                            </a>
+                            @if ($room->status == 'booked')
+                                <span class="tooltip">This room is not available. It's is Booked.</span>
+                            @elseif($room->status == 'maintenance')
+                                <span class="tooltip">This room is not available due to maintenance.</span>
+                            @endif
+                        @else
+                            <a href="{{ route('hotel.home') }}">
+                                <button class="check_avail">Check Availability</button>
+                            </a>
                         @endif
                     </div>
                 </div>

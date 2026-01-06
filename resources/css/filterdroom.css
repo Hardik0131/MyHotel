@@ -1,0 +1,33 @@
+section {
+    padding: 25px;
+    width: 100%;
+}
+
+#booking_top_part {
+    display: flex;
+    justify-content: center;
+}
+
+.booking_top_part {
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+}
+
+.booking_top_part .title {
+    font-size: 40px;
+    font-weight: 600;
+
+}
+
+.booking_top_part .text_part {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booking_top_part .image_part img {
+    width: 250px;
+    border-radius: 10px;
+}
+

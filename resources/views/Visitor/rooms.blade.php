@@ -13,6 +13,11 @@
                 <div class="rooms_page_text">
                     Our Rooms
                 </div>
+                <div class="room_page_text_two" style="font-size:18px;">
+                    @if($filtered)
+                        Available Rooms in {{ $checkIn }} to {{ $checkOut}}
+                    @endif
+                </div>
                 <div class="rooms_page_small_text">
                     Choose the perfect room for your comfortable stay
                 </div>
@@ -71,7 +76,11 @@
                                 </div>
                             </div>
                             <div class="rooms_page_booking_detail">
-                                <a href="{{ route('room.detail', $room) }}">
+                                <a href="{{ route('hotel.room.detail', [
+                                $room,
+                                'check_in_date' => request('check_in_date'),
+                                'check_out_date' => request('check_out_date'),
+                                ]) }}">
                                     <button>
                                         View Detail
                                     </button>
@@ -88,9 +97,11 @@
             <div class="footer_text">
                 Ready to Experience Comfort Like Never Before?
             </div>
-            {{-- <div class="footer_booking_btn">
-                <button>Book Your Stay</button>
-            </div> --}}
+            <div class="footer_booking_btn">
+                <a href="{{ route('hotel.home') }}">
+                    <button>Book Your Stay</button>
+                </a>
+            </div>
         </div>
     </section>
 @endsection

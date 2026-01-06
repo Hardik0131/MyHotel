@@ -23,4 +23,8 @@ class Room extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
+
+    public function bookings(){
+        return $this->hasMany(Booking::class);
+    }
 }

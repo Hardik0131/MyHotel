@@ -57,8 +57,8 @@
                             <td class="status_badge {{ $room->status }}">{{ ucfirst($room->status) ?: 'N/A' }}</td>
                             <td id="action_btn">
                                 <div class="action_btn">
-                                    <a href="{{ route('admin.rooms.edit', $room->id) }}"
-                                        data-url="{{ route('admin.rooms.edit', $room->id) }}" class="edit-rooms"><i
+                                    <a href="{{ route('admin.rooms.edit', $room) }}"
+                                        data-url="{{ route('admin.rooms.edit', $room) }}" class="edit-rooms"><i
                                             class="ri-edit-2-line"></i></a>
                                     <i class="ri-delete-bin-line rooms-delete-btn" data-id="{{ $room->id }}"></i>
                                 </div>

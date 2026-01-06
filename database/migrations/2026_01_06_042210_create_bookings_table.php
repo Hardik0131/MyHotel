@@ -11,12 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guests', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('room_id')->constrained()->onDelete('cascade');
+            $table->string('user_name');
+            $table->string('user_email');
             $table->date('check_in_date');
             $table->date('check_out_date');
-            $table->string('status');
+            $table->enum('status', [
+                'pending',
+                'confirmed',
+                'cancelled',
+            ])->default('pending');
+            $table->string('expected_time')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guests');
+        Schema::dropIfExists('bookings');
     }
 };

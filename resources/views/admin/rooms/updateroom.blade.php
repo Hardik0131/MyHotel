@@ -18,7 +18,7 @@
                 </div>
             @endif
         </div>
-        <form action="{{ route('admin.rooms.update', $room->id) }}" method="POST" id="form" enctype="multipart/form-data">
+        <form action="{{ route('admin.rooms.update', $room) }}" method="POST" id="form" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="input-group">

@@ -21,9 +21,35 @@
                         <h1 class="headline">Experience Luxury <br> and Comfort</h1>
                         <p>Enjoy exceptional service and elegant accomodations.</p>
                     </div>
-                    <button type="button">
-                        <a href="{{ route('hotel.rooms') }}">Check Availability</a>
-                    </button>
+                    <div class="availibility_form_form">
+                        <form action="{{ route('hotel.room') }}" method="GET" class="form">
+                            <div class="availibility_form">
+                                <div class="input-group">
+                                    <label for="check_in_date">Check In Date</label>
+                                    <input type="date" class="formControl" id="check_in" name="check_in_date" min="{{ date('Y-m-d') }}" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="check_out_date">Check Out Date</label>
+                                    <input type="date" class="formControl" id="check_in" name="check_out_date" min="{{ date('Y-m-d') }}" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="adults">Adults</label>
+                                    <input type="number" class="formControl" id="adults" name="adults" min="1" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="childrens">Childrens</label>
+                                    <input type="number" class="formControl" id="childrens" name="childrens" min="0" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="rooms">Rooms</label>
+                                    <input type="number" class="formControl" id="rooms" name="rooms" value="1" min="1" required>
+                                </div>
+                            </div>
+                            <button type="submit">
+                                Check Availability
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="rooms_part">
@@ -41,7 +67,6 @@
             <div class="room_text">
                 Featured Room
             </div>
-
             <div class="room_card">
                 @foreach ($rooms as $room)
                     <div class="deluxe_room booking_room">
@@ -93,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="booking_detail">
-                                <a href="{{ route('room.detail', $room) }}">
+                                <a href="{{ route('hotel.room.detail', $room) }}">
                                     <button>
                                         View Detail
                                     </button>
@@ -226,7 +251,7 @@
             </div>
             <div class="footer_booking_btn">
                 <button>
-                    <a href="{{ route('hotel.rooms') }}">Book Your Stay</a>
+                    <a href="{{ route('hotel.room') }}">Book Your Stay</a>
                 </button>
             </div>
         </div>

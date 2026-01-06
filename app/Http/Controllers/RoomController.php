@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,20 +17,97 @@ class RoomController extends Controller
         return view('visitor.home', compact('rooms'));
     }
 
-    public function rooms()
+    public function bookingview(Room $room, Request $request)
     {
-        $rooms = Room::orderByRaw("FIELD(status, 'available', 'booked', 'maintenance')")->get();
-        return view('visitor.rooms', compact('rooms'));
+        return view('visitor.booking', [
+            'room' => $room,
+            'checkIn' => $request->query('check_in_date'),
+            'checkOut' => $request->query('check_out_date'),
+        ]);
     }
 
-    public function detail(Room $room){
+    public function booking(Request $request, Room $room)
+    {
+        $request->validate([
+            'user_name' => 'required',
+            'user_email' => 'required|email',
+            'expected_time' => 'nullable',
+            'note' => 'nullable',
+        ]);
 
-        return view('visitor.detail', compact('room'));
+        Booking::create([
+            'room_id' => $room->id,
+            'user_name' => $request->user_name,
+            'user_email' => $request->user_email,
+            'expected_time' => $request->expected_time,
+            'check_in_date' => $request->check_in_date,
+            'check_out_date' => $request->check_out_date,
+            'note' => $request->note,
+        ]);
+
+        return redirect()->back()->with('success', 'Room Booked Succesfully.');
     }
 
-    public function booking(Room $room){
-        return view('visitor.booking', compact('room'));
+    public function checkAvailibility(Request $request)
+    {
+        $checkIn = $request->query('check_in_date');
+        $checkOut = $request->query('check_out_date');
+
+        if (!$checkIn || !$checkOut) {
+            $rooms = Room::all();
+
+            return view('visitor.rooms', [
+                'rooms' => $rooms,
+                'filtered' => false,
+            ]);
+        }
+
+        $request->validate([
+            'check_in_date' => 'required|date',
+            'check_out_date' => 'required|after:check_in_date',
+        ]);
+
+        $rooms = Room::whereNotIn('id', function ($query) use ($checkIn, $checkOut) {
+            $query->select('room_id')
+                ->from('bookings')
+                // ->whereIn('status', 'confirmed')
+                ->where('check_in_date', '<', $checkOut)
+                ->where('check_out_date', '>', $checkIn);
+        })->orderByRaw("FIELD(status, 'available', 'booked', 'maintenance')")->get();
+
+        return view('visitor.rooms', [
+            'rooms' => $rooms,
+            'filtered' => true,
+            'checkIn' => $checkIn,
+            'checkOut' => $checkOut,
+        ]);
     }
+
+    public function detail(Room $room, Request $request)
+    {
+        $checkIn = $request->query('check_in_date');
+        $checkOut = $request->query('check_out_date');
+
+        if (!$checkIn || !$checkOut) {
+            return view('visitor.detail', [
+                'room' => $room,
+                'filtered' => false,
+            ]);
+        }
+
+        return view('visitor.detail', [
+            'room' => $room,
+            'filtered' => true,
+            'checkIn' => $checkIn,
+            'checkOut' => $checkOut,
+        ]);
+    }
+    // public function rooms()
+    // {
+    //     $rooms = Room::orderByRaw("FIELD(status, 'available', 'booked', 'maintenance')")->get();
+    //     return view('visitor.rooms', compact('rooms'));
+    // }
+
 
     public function index(Request $request)
     {
@@ -97,10 +175,9 @@ class RoomController extends Controller
         //
     }
 
-    public function edit(Request $request, $slug)
+    public function edit(Request $request, Room $room)
     {
-        $room = Room::findOrFail($slug);
-
+        
         if ($request->ajax()) {
             return view('admin.rooms.updateroom', compact('room'));
         }
@@ -150,22 +227,21 @@ class RoomController extends Controller
 
     public function destroy($id)
     {
-    
+
         $room = Room::findOrFail($id);
 
-        try{
+        try {
             $room->delete();
 
             return response()->json([
                 'status' => 'success',
                 'message' => 'Room Data Delete Succesfully',
             ]);
-        }catch(\Throwable $e){
+        } catch (\Throwable $e) {
             return response()->json([
                 'status' => 'error',
                 'message' => $e->getMessage(),
             ], 500);
         }
-
     }
 }

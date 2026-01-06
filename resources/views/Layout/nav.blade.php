@@ -1,11 +1,13 @@
 <nav>
     <div class="web_logo">
-        <img src="{{ asset('images/logo.png') }}" alt="">
+        <a href="{{ route('hotel.home') }}">
+            <img src="{{ asset('images/logo.png') }}" alt="">
+        </a>
     </div>
     <div class="nav_item">
         <ul class="nav_menu">
             <li><a href="{{ route('hotel.home') }}" class="{{ request()->routeIs('hotel.home') ? 'active' : '' }}">Home</a></li>
-            <li><a href="{{ route('hotel.rooms') }}" class="{{ request()->routeIs('hotel.rooms') ? 'active' : '' }}">Rooms</a></li>
+            <li><a href="{{ route('hotel.room') }}" class="{{ request()->routeIs('hotel.room*') ? 'active' : '' }}">Rooms</a></li>
             <li><a href="">My Booking</a></li>
             <li><a href="">Contact</a></li>
             <li><a href=""><i class="ri-notification-4-fill"></i><i class="fa-regular fa-circle-user"></i></a>

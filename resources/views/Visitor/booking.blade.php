@@ -1,7 +1,7 @@
 @extends('Layout/master')
 
 @section('vite')
-    @vite('resources/css/booking.css')
+    @vite(['resources/css/booking.css', 'resources/js/booking.js'])
 @endsection
 
 @section('content')
@@ -32,44 +32,63 @@
             </div>
         </div>
     </section>
+    <section style="margin: 0; padding:0;">
+        <div class="booking_alert">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-warning" role="alert">
+                        <div class="alert-warning-message">
+                            <strong>Error!</strong>
+                            {{ $error }}
+                        </div>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                            <i class="ri-close-line"></i>
+                        </button>
+                    </div>
+                @endforeach
+            @elseif(session('success'))
+                <div class="alert alert-success" role="alert">
+                    <div class="alert-success-message">
+                        <strong>Success!</strong>
+                        {{ session('success') }}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            @endif
+        </div>
+    </section>
     <section class="form">
-        <form action="" id="form">
+        <form action="{{ route('booking.store', ['room' => $room->slug])}}" method="POST" id="form">
             @csrf
             <div class="input-group">
-                <label for="guest_name">Full Name</label>
+                <label for="user_name">Full Name <p>*</p></label>
                 <input type="text" class="formControl" id="guest_room" placeholder="Enter Your Full Name"
-                    name="guest_name" autocomplete="off">
+                    name="user_name" autocomplete="off">
             </div>
             <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" class="formControl" id="email" placeholder="Enter Your Email" name="email"
+                <label for="user_email">Email <p>*</p></label>
+                <input type="email" class="formControl" id="user_email" placeholder="Enter Your Email" name="user_email"
                     autocomplete="off">
             </div>
-            <div class="dates">
-                <div class="input-group">
-                    <label for="check-in">Check-In Date</label>
-                    <input type="date" class="formControl" id="check-in" name="check-in" autocomplete="off"
-                        min="2026-01-03">
-                </div>
-                <div class="input-group">
-                    <label for="check-out">Check-Out Date</label>
-                    <input type="date" class="formControl" id="check-out" name="check-out" autocomplete="off">
-                </div>
+            <input type="hidden" class="formControl" id="check-in" name="check_in_date" autocomplete="off" value="{{ $checkIn }}">
+            <input type="hidden" class="formControl" id="check-out" name="check_out_date" autocomplete="off" value="{{ $checkOut }}">
+            </div>
             </div>
             <div class="input-group">
-                <label for="guests">Total Guests</label>
-                <input type="number" class="formControl" id="guests" name="check-out" autocomplete="off" min="1">
+                <label for="expected_time">Expected Time of Arival</label>
+                <input type="text" class="formControl" id="expected_time" name="expected_time" autocomplete="off">
             </div>
             <div class="input-group">
-                <label for="additional_requirment">Additional Request</label>
-                <input type="text" class="formControl" id="additional_requirment" name="additional_requirment"
-                    autocomplete="off" placeholder="E.x : Extra Pillow">
+                <label for="note">Note</label>
+                <input type="text" class="formControl" id="note" name="note" autocomplete="off">
             </div>
-            {{-- <div class="btn">
-                <button type="submit">Find Room</button>
-                <a href="{{ route('admin.rooms') }}" data-url="{{ route('admin.rooms') }}" class="return-rooms">Return
-                    to rooms page?</a>
-            </div> --}}
+            <div class="btn">
+                <button type="submit">Book Room</button>
+                {{-- <a href="{{ route('admin.rooms') }}" data-url="{{ route('admin.rooms') }}" class="return-rooms">Return
+                    to rooms page?</a> --}}
+            </div>
         </form>
     </section>
 @endsection
