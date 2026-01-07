@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('room_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('user_email');
-            $table->date('check_in_date');
-            $table->date('check_out_date');
+            $table->dateTime('check_in_date');
+            $table->dateTime('check_out_date');
             $table->enum('status', [
                 'pending',
                 'confirmed',

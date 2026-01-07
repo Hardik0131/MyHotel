@@ -72,8 +72,8 @@
                 <input type="email" class="formControl" id="user_email" placeholder="Enter Your Email" name="user_email"
                     autocomplete="off">
             </div>
-            <input type="hidden" class="formControl" id="check-in" name="check_in_date" autocomplete="off" value="{{ $checkIn }}">
-            <input type="hidden" class="formControl" id="check-out" name="check_out_date" autocomplete="off" value="{{ $checkOut }}">
+            <input type="hidden" class="formControl" id="check-in" name="check_in_date" autocomplete="off" value="{{ request('check_in_date') }}">
+            <input type="hidden" class="formControl" id="check-out" name="check_out_date" autocomplete="off" value="{{ request('check_out_date') }}">
             </div>
             </div>
             <div class="input-group">

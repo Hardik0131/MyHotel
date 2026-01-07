@@ -50,8 +50,8 @@ class RoomController extends Controller
 
     public function checkAvailibility(Request $request)
     {
-        $checkIn = $request->query('check_in_date');
-        $checkOut = $request->query('check_out_date');
+        $checkIn = $request->check_in_date;
+        $checkOut = $request->check_out_date;
 
         if (!$checkIn || !$checkOut) {
             $rooms = Room::all();
@@ -63,7 +63,7 @@ class RoomController extends Controller
         }
 
         $request->validate([
-            'check_in_date' => 'required|date',
+            'check_in_date' => 'required',
             'check_out_date' => 'required|after:check_in_date',
         ]);
 

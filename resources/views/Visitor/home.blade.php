@@ -21,18 +21,43 @@
                         <h1 class="headline">Experience Luxury <br> and Comfort</h1>
                         <p>Enjoy exceptional service and elegant accomodations.</p>
                     </div>
+                    <div class="booking_alert">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-warning" role="alert">
+                                    <div class="alert-warning-message">
+                                        <strong>Error!</strong>
+                                        {{ $error }}
+                                    </div>
+                                    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                                        <i class="ri-close-line"></i>
+                                    </button>
+                                </div>
+                            @endforeach
+                        @elseif(session('success'))
+                            <div class="alert alert-success" role="alert">
+                                <div class="alert-success-message">
+                                    <strong>Success!</strong>
+                                    {{ session('success') }}
+                                </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="ri-close-line"></i>
+                                </button>
+                            </div>
+                        @endif
+                    </div>
                     <div class="availibility_form_form">
                         <form action="{{ route('hotel.room') }}" method="GET" class="form">
                             <div class="availibility_form">
                                 <div class="input-group">
                                     <label for="check_in_date">Check In Date</label>
-                                    <input type="date" class="formControl" id="check_in" name="check_in_date"
-                                        min="{{ date('Y-m-d') }}" required>
+                                    <input type="datetime-local" class="formControl" id="check_in" name="check_in_date"
+                                        min="{{ now('Asia/Kolkata')->format('Y-m-d\TH:i') }}" required>
                                 </div>
                                 <div class="input-group">
                                     <label for="check_out_date">Check Out Date</label>
-                                    <input type="date" class="formControl" id="check_in" name="check_out_date"
-                                        min="{{ date('Y-m-d') }}" required>
+                                    <input type="datetime-local" class="formControl" id="check_out" name="check_out_date"
+                                        min="{{ now('Asia/Kolkata')->format('Y-m-d\TH:i') }}" required>
                                 </div>
                                 <div class="input-group">
                                     <label for="adults">Adults</label>
@@ -101,7 +126,7 @@
                             <div class="guest_label">
                                 <i class="ri-information-line"></i>
                                 <p>
-                                    Max Guest {{ ($room->max_guests) }}
+                                    Max Guest {{ $room->max_guests }}
                                 </p>
                             </div>
                             <img src="{{ asset('storage/' . $room->image) }}" alt="">

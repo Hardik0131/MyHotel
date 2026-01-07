@@ -114,11 +114,21 @@ html {
     font-weight: 400;
 }
 
-.input-group input {
+#adults,
+#childrens,
+#rooms {
     border: 1px solid #928e8e;
     padding: 5px 10px;
     border-radius: 5px;
-    width: 180px;
+    width: 150px;
+}
+
+#check_in,
+#check_out{
+    border: 1px solid #928e8e;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 250px;
 }
 
 .input-group input:focus {
