@@ -26,23 +26,28 @@
                             <div class="availibility_form">
                                 <div class="input-group">
                                     <label for="check_in_date">Check In Date</label>
-                                    <input type="date" class="formControl" id="check_in" name="check_in_date" min="{{ date('Y-m-d') }}" required>
+                                    <input type="date" class="formControl" id="check_in" name="check_in_date"
+                                        min="{{ date('Y-m-d') }}" required>
                                 </div>
                                 <div class="input-group">
                                     <label for="check_out_date">Check Out Date</label>
-                                    <input type="date" class="formControl" id="check_in" name="check_out_date" min="{{ date('Y-m-d') }}" required>
+                                    <input type="date" class="formControl" id="check_in" name="check_out_date"
+                                        min="{{ date('Y-m-d') }}" required>
                                 </div>
                                 <div class="input-group">
                                     <label for="adults">Adults</label>
-                                    <input type="number" class="formControl" id="adults" name="adults" min="1" required>
+                                    <input type="number" class="formControl" id="adults" name="adults" min="1"
+                                        required>
                                 </div>
                                 <div class="input-group">
                                     <label for="childrens">Childrens</label>
-                                    <input type="number" class="formControl" id="childrens" name="childrens" min="0" required>
+                                    <input type="number" class="formControl" id="childrens" name="childrens" min="0"
+                                        required>
                                 </div>
                                 <div class="input-group">
                                     <label for="rooms">Rooms</label>
-                                    <input type="number" class="formControl" id="rooms" name="rooms" value="1" min="1" required>
+                                    <input type="number" class="formControl" id="rooms" name="rooms" value="1"
+                                        min="1" required>
                                 </div>
                             </div>
                             <button type="submit">
@@ -93,6 +98,12 @@
                                     </p>
                                 </div>
                             @endif
+                            <div class="guest_label">
+                                <i class="ri-information-line"></i>
+                                <p>
+                                    Max Guest {{ ($room->max_guests) }}
+                                </p>
+                            </div>
                             <img src="{{ asset('storage/' . $room->image) }}" alt="">
                         </div>
                         <div class="booking_text">

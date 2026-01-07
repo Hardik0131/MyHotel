@@ -50,6 +50,12 @@
                                     </div>
                                 @endif
                             @endif
+                            <div class="guest_label">
+                                <i class="ri-information-line"></i>
+                                <p>
+                                    Max Guest {{ $room->max_guests }}
+                                </p>
+                            </div>
                             <img src="{{ asset('storage/' . $room->image) }}" alt="">
                         </div>
                         <div class="rooms_page_booking_text">

@@ -10,7 +10,7 @@
     <section>
         <div class="detail_page">
             <div class="room_detail_image">
-                @if ($room->status == 'available')
+                {{-- @if ($room->status == 'available')
                     <div class="label {{ $room->status }}">
                         <i class="fa-regular fa-circle-check"></i>
                         <p>
@@ -31,7 +31,7 @@
                             {{ ucfirst($room->status) }}
                         </p>
                     </div>
-                @endif
+                @endif --}}
                 <img src="{{ asset('storage/' . $room->image) }}" alt="">
             </div>
             <div class="room_detail_name">
