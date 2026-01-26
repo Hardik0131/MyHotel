@@ -59,7 +59,7 @@
         </div>
     </section>
     <section class="form">
-        <form action="{{ route('booking.store', ['room' => $room->slug])}}" method="POST" id="form">
+        <form action="{{ route('booking.store', ['room' => $room->slug]), [], false}}" method="POST" id="form">
             @csrf
             <div class="input-group">
                 <label for="user_name">Full Name <p>*</p></label>

@@ -46,7 +46,7 @@
                         @endif
                     </div>
                     <div class="availibility_form_form">
-                        <form action="{{ route('hotel.room') }}" method="GET" class="form">
+                        <form action="{{ route('hotel.room', [], false) }}" method="GET" class="form">
                             <div class="availibility_form">
                                 <div class="input-group">
                                     <label for="check_in_date">Check In Date</label>
