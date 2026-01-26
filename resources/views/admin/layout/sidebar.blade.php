@@ -8,7 +8,7 @@
         <li>
             <a href="{{ route('admin.rooms') }}"
                 class="{{ request()->routeIs('admin.rooms*') ? 'active' : '' }} sidebar-link"
-                data-url="{{ route('admin.rooms') }}">
+                data-url="{{ route('admin.rooms', [], false) }}">
                 <i class="ri-hotel-bed-line"></i>
                 <span class="links_name">Rooms</span>
             </a>
@@ -17,7 +17,7 @@
         <li>
             <a href="{{ route('admin.booking') }}"
                 class="{{ request()->routeIs('admin.booking*') ? 'active' : '' }} sidebar-link"
-                data-url="{{ route('admin.booking') }}">
+                data-url="{{ route('admin.booking', [], false) }}">
                 <i class="ri-shopping-cart-2-line"></i>
                 <span class="links_name">Booking</span>
             </a>

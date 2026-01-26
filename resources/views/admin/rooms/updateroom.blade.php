@@ -59,7 +59,7 @@
             </div>
             <div class="btn">
                 <button type="submit">Update rooms</button>
-                <a href="{{ route('admin.rooms') }}" data-url="{{ route('admin.rooms') }}" class="return-rooms">Return
+                <a href="{{ route('admin.rooms') }}" data-url="{{ route('admin.rooms', [], false) }}" class="return-rooms">Return
                     to rooms page?</a>
             </div>
         </form>

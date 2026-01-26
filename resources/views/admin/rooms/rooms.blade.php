@@ -15,7 +15,7 @@
                     <i class="bx bx-search"></i>
                 </div>
                 <div class="add-new-rooms">
-                    <a href="{{ route('admin.rooms.addrooms') }}" data-url="{{ route('admin.rooms.addrooms') }}"
+                    <a href="{{ route('admin.rooms.addrooms') }}" data-url="{{ route('admin.rooms.addrooms', [], false) }}"
                         class="add-rooms">
                         <button>
                             <i class="bx bx-plus"></i>
@@ -58,7 +58,7 @@
                             <td id="action_btn">
                                 <div class="action_btn">
                                     <a href="{{ route('admin.rooms.edit', $room) }}"
-                                        data-url="{{ route('admin.rooms.edit', $room) }}" class="edit-rooms"><i
+                                        data-url="{{ route('admin.rooms.edit', $room, [], false) }}" class="edit-rooms"><i
                                             class="ri-edit-2-line"></i></a>
                                     <i class="ri-delete-bin-line rooms-delete-btn" data-id="{{ $room->id }}"></i>
                                 </div>
