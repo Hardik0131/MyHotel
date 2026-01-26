@@ -161,7 +161,7 @@ class RoomController extends Controller
             'price_per_night' => 'required|numeric|min:0.01|decimal:0,2',
             'max_guests' => 'required|min:1',
             'bed_type' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status' => 'required|in:available,booked,maintenance',
         ]);
 
@@ -211,7 +211,7 @@ class RoomController extends Controller
             'price_per_night' => 'required|numeric|min:0.01|decimal:0,2',
             'max_guests' => 'required|min:1',
             'bed_type' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status' => 'required|in:available,booked,maintenance',
         ]);
 
