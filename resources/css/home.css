@@ -25,11 +25,12 @@ html {
     color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    position: relative;
 }
 
 .home_top_part {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,12 +38,20 @@ html {
     /* filter: blur(5px); */
 }
 
+.home_top_part::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    z-index: 1;
+}
 
 .home_image {
     position: absolute;
     z-index: 1;
     width: 100%;
-    height: 70vh;
+    height: 100vh;
 }
 
 .home_image img {
@@ -80,6 +89,8 @@ html {
 
 .availibility_form_form {
     margin-top: 35px;
+    display: flex;
+    justify-content: center;
 }
 
 .availibility_form_form form {
@@ -124,7 +135,7 @@ html {
 }
 
 #check_in,
-#check_out{
+#check_out {
     border: 1px solid #928e8e;
     padding: 5px 10px;
     border-radius: 5px;
@@ -175,7 +186,7 @@ html {
     padding-left: 100px;
     gap: 50px;
     padding-right: 100px;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .room_text {
@@ -288,7 +299,7 @@ html {
 .booking_price_price {
     font-size: 24px;
     font-weight: 500;
-    color: red;
+    color: #D32F2F;
 }
 
 .booking_detail {
@@ -297,12 +308,18 @@ html {
 }
 
 .booking_detail button {
-    background-color: rgb(0, 75, 75);
+    background-color: #0B5D5D;
     color: rgb(255, 255, 255);
     padding: 6px 60px;
     cursor: pointer;
     border-radius: 3px;
     text-align: center;
+}
+
+.booking_detail button:hover{
+    background-color: #083F3F;
+    transform: translateY(-2px);
+    transition: all 0.5s ease;
 }
 
 .hotel_feature {
@@ -379,7 +396,7 @@ html {
     gap: 10px;
     width: 250px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 .amenities_text {
@@ -388,8 +405,8 @@ html {
 
 .amenities_image img {
     border: none;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .amenities_title {
@@ -421,6 +438,65 @@ html {
     border-radius: 5px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+}
+
+/* 
+    Mouse Scroll Idicator
+*/
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid #fcbb0080;
+    border-radius: 20px;
+    position: relative;
+
+    animation: mouse-action 1.5s infinite ease-in-out;
+}
+
+.wheel {
+    height: 8px;
+    width: 4px;
+    background: #ffc004f3;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes mouse-action {
+    0% {
+        transform: translateY(0);
+        border-color: #fcbb0080;
+    }
+
+    25% {
+        transform: translateY(-12px);
+        border-color: #ffbf00;
+    }
+
+    45% {
+        transform: translate(0);
+        border-color: #fcbb0080;
+    }
+
+    70% {
+        border-color: #a37a0080;
+    }
+
+    100% {
+        transform: translateY(0);
+        border-color: #fcbb0080;
+    }
 }
 
 @media (max-width:1400px) {
@@ -476,16 +552,6 @@ html {
 
     .footer_booking_btn button {
         font-size: 16px;
-    }
-}
-
-@media (max-width:820px) {
-    .home_top_part {
-        height: 80vh;
-    }
-
-    .home_image {
-        height: 80vh;
     }
 }
 

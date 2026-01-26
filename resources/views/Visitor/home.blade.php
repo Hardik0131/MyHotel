@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-    @include('Layout/nav')
     <section>
         <div class="body_part">
             <div class="home_top_part">
@@ -81,13 +80,10 @@
                         </form>
                     </div>
                 </div>
-            </div>
-            <div class="rooms_part">
-                <div class="room_title">
-                    <h1></h1>
-                </div>
-                <div class="room_card">
-
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
                 </div>
             </div>
         </div>

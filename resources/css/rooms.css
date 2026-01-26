@@ -9,11 +9,12 @@
 }
 
 .rooms_page_card {
+    width: 100%;
     padding: 25px 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-    justify-content: start;
+    justify-content: space-between;
 }
 
 .rooms_page_booking_room {
@@ -121,7 +122,7 @@
 .rooms_page_booking_price_price {
     font-size: 24px;
     font-weight: 500;
-    color: red;
+    color: #D32F2F;
 }
 
 .rooms_page_booking_detail {
@@ -130,12 +131,18 @@
 }
 
 .rooms_page_booking_detail button {
-    background-color: rgb(0, 75, 75);
+    background-color: #0B5D5D;
     color: rgb(255, 255, 255);
     padding: 6px 60px;
     cursor: pointer;
     border-radius: 3px;
     text-align: center;
+}
+
+.rooms_page_booking_detail button:hover{
+    background-color: #083F3F;
+    transform: translateY(-2px);
+    transition: all 0.5s ease;
 }
 
 .footer {

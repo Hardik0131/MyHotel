@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    @include('Layout/nav')
     <section id="booking_top_part">
         <div class="booking_top_part">
             <div class="text_part">

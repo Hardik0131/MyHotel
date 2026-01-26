@@ -8,8 +8,7 @@
         <ul class="nav_menu">
             <li><a href="{{ route('hotel.home') }}" class="{{ request()->routeIs('hotel.home') ? 'active' : '' }}">Home</a></li>
             <li><a href="{{ route('hotel.room') }}" class="{{ request()->routeIs('hotel.room*') ? 'active' : '' }}">Rooms</a></li>
-            <li><a href="">My Booking</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a></li>
             <li><a href=""><i class="ri-notification-4-fill"></i><i class="fa-regular fa-circle-user"></i></a>
             </li>
         </ul>

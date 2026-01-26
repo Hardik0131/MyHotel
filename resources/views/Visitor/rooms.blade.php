@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-    @include('Layout/nav')
-
     <section>
         <div class="rooms_page">
             <div class="rooms_page_title_text">

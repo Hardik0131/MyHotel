@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    @include('Layout/nav')
 
     <section>
         <div class="detail_page">

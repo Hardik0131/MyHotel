@@ -31,3 +31,7 @@ Route::delete('admin/room/delete/{id}',[RoomController::class, 'destroy'])->name
 
 Route::get('/admin/booking', [BookingController::class, 'index'])->name('admin.booking');
 Route::delete('admin/booking/delete/{id}',[BookingController::class, 'destroy'])->name('admin.booking.delete');
+
+Route::get('contact', function(){
+    return view('visitor.contact');
+})->name('contact');
