@@ -8,47 +8,37 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
-    libpq-dev \
     zip \
-    curl
+    curl \
+    nodejs \
+    npm
 
-# Install PHP extensions (IMPORTANT ORDER)
-RUN docker-php-ext-install \
-    pdo \
-    pdo_mysql \
-    pgsql \
-    pdo_pgsql \
-    mbstring \
-    zip \
-    exif \
-    pcntl \
-    bcmath \
-    gd
+# PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl bcmath gd
 
 # Enable Apache rewrite
 RUN a2enmod rewrite
 
-# Set working directory
 WORKDIR /var/www/html
 
-# Copy project files
 COPY . .
 
-# Install Composer
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Fix permissions
-RUN chown -R www-data:www-data /var/www/html \
+# Install JS deps + build assets
+RUN npm install
+RUN npm run build
+
+# Permissions
+RUN chown -R www-data:www-data storage bootstrap/cache public/build \
     && chmod -R 775 storage bootstrap/cache
 
-# Point Apache to Laravel public folder
+# Apache to public
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' \
     /etc/apache2/sites-available/000-default.conf
 
-# Make start script executable
-RUN chmod +x /var/www/html/start.sh
-
 EXPOSE 80
+
+CMD ["apache2-foreground"]
