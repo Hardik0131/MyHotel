@@ -15,7 +15,7 @@ COPY vite.config.js .
 RUN mkdir -p public
 
 # Build assets
-RUN npm run build
+RUN npm run build --loglevel verbose
 
 
 # ---------- BACKEND ----------
