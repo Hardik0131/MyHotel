@@ -8,13 +8,15 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libpq-dev \
     zip \
     curl
 
-# Install PHP extensions (IMPORTANT: include pdo_pgsql)
+# Install PHP extensions (IMPORTANT ORDER)
 RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
+    pgsql \
     pdo_pgsql \
     mbstring \
     zip \
@@ -35,7 +37,7 @@ COPY . .
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install dependencies
+# Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Fix permissions
