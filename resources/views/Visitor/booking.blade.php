@@ -1,4 +1,4 @@
-@extends('layout/master')
+@extends('layout.master')
 
 @section('vite')
     @vite(['resources/css/booking.css', 'resources/js/booking.js'])

@@ -21,7 +21,7 @@ class RoomController extends Controller
                 ELSE 4
             END
         ")
-->limit(3)->get();
+        ->limit(3)->get();
         return view('visitor.home', compact('rooms'));
     }
 
