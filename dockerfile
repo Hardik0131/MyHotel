@@ -48,4 +48,7 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' \
     /etc/apache2/sites-available/000-default.conf
 
+# Make start script executable
+RUN chmod +x /var/www/html/start.sh
+
 EXPOSE 80
