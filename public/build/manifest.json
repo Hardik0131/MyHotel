@@ -1,0 +1,157 @@
+{
+  "resources/css/admin/booking.css": {
+    "file": "assets/booking-pWkiMu-K.css",
+    "src": "resources/css/admin/booking.css"
+  },
+  "resources/css/admin/layout/master.css": {
+    "file": "assets/master-D4ZM6GfO.css",
+    "src": "resources/css/admin/layout/master.css",
+    "isEntry": true,
+    "name": "master",
+    "names": [
+      "master.css"
+    ]
+  },
+  "resources/css/admin/layout/sidebar.css": {
+    "file": "assets/sidebar-CG5xxcei.css",
+    "src": "resources/css/admin/layout/sidebar.css",
+    "isEntry": true,
+    "name": "sidebar",
+    "names": [
+      "sidebar.css"
+    ]
+  },
+  "resources/css/admin/rooms.css": {
+    "file": "assets/rooms-uJ19Ijwp.css",
+    "src": "resources/css/admin/rooms.css"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-BAvEl0OK.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/css/booking.css": {
+    "file": "assets/booking-CFf0Jm2C.css",
+    "src": "resources/css/booking.css",
+    "isEntry": true,
+    "name": "booking",
+    "names": [
+      "booking.css"
+    ]
+  },
+  "resources/css/contact.css": {
+    "file": "assets/contact-XZ41kjXh.css",
+    "src": "resources/css/contact.css",
+    "isEntry": true,
+    "name": "contact",
+    "names": [
+      "contact.css"
+    ]
+  },
+  "resources/css/details.css": {
+    "file": "assets/details-CB8llQv3.css",
+    "src": "resources/css/details.css",
+    "isEntry": true,
+    "name": "details",
+    "names": [
+      "details.css"
+    ]
+  },
+  "resources/css/filterdroom.css": {
+    "file": "assets/filterdroom-nalPHbgY.css",
+    "src": "resources/css/filterdroom.css",
+    "isEntry": true,
+    "name": "filterdroom",
+    "names": [
+      "filterdroom.css"
+    ]
+  },
+  "resources/css/home.css": {
+    "file": "assets/home-D26zovs-.css",
+    "src": "resources/css/home.css",
+    "isEntry": true,
+    "name": "home",
+    "names": [
+      "home.css"
+    ]
+  },
+  "resources/css/login.css": {
+    "file": "assets/login-O-qW0zsY.css",
+    "src": "resources/css/login.css",
+    "isEntry": true,
+    "name": "login",
+    "names": [
+      "login.css"
+    ]
+  },
+  "resources/css/nav.css": {
+    "file": "assets/nav-FVv1l3kF.css",
+    "src": "resources/css/nav.css",
+    "isEntry": true,
+    "name": "nav",
+    "names": [
+      "nav.css"
+    ]
+  },
+  "resources/css/register.css": {
+    "file": "assets/register-D18IfZgq.css",
+    "src": "resources/css/register.css",
+    "isEntry": true,
+    "name": "register",
+    "names": [
+      "register.css"
+    ]
+  },
+  "resources/css/rooms.css": {
+    "file": "assets/rooms-DOTQ9BaU.css",
+    "src": "resources/css/rooms.css",
+    "isEntry": true,
+    "name": "rooms",
+    "names": [
+      "rooms.css"
+    ]
+  },
+  "resources/js/admin/booking.js": {
+    "file": "assets/booking-D3hH-Bnh.js",
+    "name": "booking",
+    "src": "resources/js/admin/booking.js",
+    "isEntry": true
+  },
+  "resources/js/admin/rooms.js": {
+    "file": "assets/rooms-CVACzUmL.js",
+    "name": "rooms",
+    "src": "resources/js/admin/rooms.js",
+    "isEntry": true
+  },
+  "resources/js/admin/sidebar.js": {
+    "file": "assets/sidebar-BKfqxzuZ.js",
+    "name": "sidebar",
+    "src": "resources/js/admin/sidebar.js",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-vXxwagmv.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/bootstrap.js"
+    ]
+  },
+  "resources/js/booking.js": {
+    "file": "assets/booking-628C-wTO.js",
+    "name": "booking",
+    "src": "resources/js/booking.js",
+    "isEntry": true
+  },
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-CAiCLEjY.js",
+    "name": "bootstrap",
+    "src": "resources/js/bootstrap.js",
+    "isEntry": true
+  }
+}
