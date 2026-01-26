@@ -13,7 +13,15 @@ class RoomController extends Controller
 
     public function home()
     {
-        $rooms = Room::orderByRaw("FIELD(status, 'available', 'booked', 'maintenance')")->limit(3)->get();
+        $rooms = Room::orderByRaw("
+            CASE status
+                WHEN 'available' THEN 1
+                WHEN 'booked' THEN 2
+                WHEN 'maintenance' THEN 3
+                ELSE 4
+            END
+        ")
+->limit(3)->get();
         return view('visitor.home', compact('rooms'));
     }
 
@@ -73,7 +81,15 @@ class RoomController extends Controller
                 // ->whereIn('status', 'confirmed')
                 ->where('check_in_date', '<', $checkOut)
                 ->where('check_out_date', '>', $checkIn);
-        })->orderByRaw("FIELD(status, 'available', 'booked', 'maintenance')")->get();
+        })->orderByRaw("
+                CASE status
+                    WHEN 'available' THEN 1
+                    WHEN 'booked' THEN 2
+                    WHEN 'maintenance' THEN 3
+                    ELSE 4
+                END
+            ")
+            ->get();
 
         return view('visitor.rooms', [
             'rooms' => $rooms,
@@ -177,7 +193,7 @@ class RoomController extends Controller
 
     public function edit(Request $request, Room $room)
     {
-        
+
         if ($request->ajax()) {
             return view('admin.rooms.updateroom', compact('room'));
         }
