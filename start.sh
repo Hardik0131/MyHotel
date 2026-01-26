@@ -2,6 +2,6 @@
 
 cd /var/www/html
 
-/usr/local/bin/php artisan migrate --force
+/usr/local/bin/php artisan view:clear
 
 exec apache2-foreground
