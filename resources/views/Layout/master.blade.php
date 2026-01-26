@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    @include('Layout/nav')
+    @include('layout/nav')
     <main style="margin-top: 80px">
         @yield('content')
     </main>
