@@ -19,8 +19,10 @@ $app = Application::configure(basePath: dirname(__DIR__))
     });
 
 // 🔴 THIS IS THE FIX (DO NOT CHANGE IT)
-if (env('APP_ENV') === 'production') {
-    URL::forceScheme('https');
+if (app()->environment('production')) {
+    $app->booted(function () {
+        URL::forceScheme('https');
+    });
 }
 
-return $app->create();
+return $app;
