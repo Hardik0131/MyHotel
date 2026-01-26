@@ -2,11 +2,19 @@
 FROM node:20-alpine AS frontend
 
 WORKDIR /app
+
+# Copy package files
 COPY package*.json ./
 RUN npm install
 
+# Copy resources & config
 COPY resources resources
 COPY vite.config.js .
+
+# 🔴 FIX: create public directory BEFORE build
+RUN mkdir -p public
+
+# Build assets
 RUN npm run build
 
 
