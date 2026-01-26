@@ -1,24 +1,3 @@
-# ---------- FRONTEND BUILD ----------
-FROM node:20 AS frontend
-
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-RUN npm install
-
-# Copy resources & config
-COPY resources resources
-COPY vite.config.js .
-
-# 🔴 FIX: create public directory BEFORE build
-RUN mkdir -p public
-
-# Build assets
-RUN npm run build --loglevel verbose
-
-
-# ---------- BACKEND ----------
 FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
@@ -29,9 +8,6 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 COPY . .
-
-# copy built assets from frontend stage
-COPY --from=frontend /app/public/build public/build
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
