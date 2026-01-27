@@ -19,7 +19,8 @@ return new class extends Migration
             $table->decimal('price_per_night', 10, 2);
             $table->integer('max_guests');
             $table->string('bed_type')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable(); // secure URL
+            $table->string('image_public_id')->nullable(); // required for delete
             $table->enum('status', ['available', 'booked', 'maintenance'])->default('available');
             $table->timestamps();
         });

@@ -50,7 +50,7 @@
                             <td>₹{{ $room->price_per_night ?: 'N/A' }}</td>
                             <td>
                                 <div class="room_image">
-                                    <img src="{{ asset('storage/' . $room->image) }}" alt="">
+                                    <img src="{{ asset($room->image) }}" alt="Room Image">
                                 </div>
                             </td>
                             <td>{{ $room->max_guests }}</td>

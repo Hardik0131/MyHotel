@@ -6,7 +6,7 @@ use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class RoomController extends Controller
 {
@@ -21,7 +21,7 @@ class RoomController extends Controller
                 ELSE 4
             END
         ")
-        ->limit(3)->get();
+            ->limit(3)->get();
         return view('visitor.home', compact('rooms'));
     }
 
@@ -161,16 +161,20 @@ class RoomController extends Controller
             'price_per_night' => 'required|numeric|min:0.01|decimal:0,2',
             'max_guests' => 'required|min:1',
             'bed_type' => 'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp',
             'status' => 'required|in:available,booked,maintenance',
         ]);
 
-        $filename = null;
+
         $slug = Str::slug($request->room_name);
 
-        if ($request->has('image')) {
-            $filename = $request->file('image')->store('rooms', 'public');
-        }
+        $upload = Cloudinary::upload(
+            $request->file('image')->getRealPath(),
+            ['folder' => 'rooms']
+        );
+
+        $imageUrl = $upload->getSecurePath();
+        $imagePublicId = $upload->getPublicId();
 
         Room::create([
             'room_name' => $request->room_name,
@@ -179,7 +183,8 @@ class RoomController extends Controller
             'price_per_night' => $request->price_per_night,
             'max_guests' => $request->max_guests,
             'bed_type' => $request->bed_type,
-            'image' => $filename,
+            'image' => $imageUrl,
+            'image_public_id' => $imagePublicId,
             'status' => $request->status,
         ]);
 
@@ -211,47 +216,64 @@ class RoomController extends Controller
             'price_per_night' => 'required|numeric|min:0.01|decimal:0,2',
             'max_guests' => 'required|min:1',
             'bed_type' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp',
             'status' => 'required|in:available,booked,maintenance',
         ]);
 
-        $filename = $room->image;
+        // default: keep old image
+        $imageUrl = $room->image;
+        $imagePublicId = $room->image_public_id;
 
-        if ($request->has('image')) {
+        if ($request->hasFile('image')) {
 
-            // delete old image
-            if ($room->image && Storage::disk('public')->exists($room->image)) {
-                Storage::disk('public')->delete($room->image);
+            // delete old image from Cloudinary
+            if ($room->image_public_id) {
+                Cloudinary::destroy($room->image_public_id);
             }
 
-            // store new image
-            $filename = $request->file('image')->store('rooms', 'public');
+            // upload new image
+            $upload = Cloudinary::upload(
+                $request->file('image')->getRealPath(),
+                ['folder' => 'rooms']
+            );
+
+            $imageUrl = $upload->getSecurePath();
+            $imagePublicId = $upload->getPublicId();
         }
 
         $room->update([
             'room_name' => $request->room_name,
+            'slug' => Str::slug($request->room_name),
             'description' => $request->description,
             'price_per_night' => $request->price_per_night,
             'max_guests' => $request->max_guests,
             'bed_type' => $request->bed_type,
-            'image' => $filename,
+            'image' => $imageUrl,
+            'image_public_id' => $imagePublicId,
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.rooms')->with('success', 'Room Update Successfully');
+        return redirect()->route('admin.rooms')
+            ->with('success', 'Room Update Successfully');
     }
+
 
     public function destroy($id)
     {
-
         $room = Room::findOrFail($id);
 
         try {
+
+            // delete image from Cloudinary
+            if ($room->image_public_id) {
+                Cloudinary::destroy($room->image_public_id);
+            }
+
             $room->delete();
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Room Data Delete Succesfully',
+                'message' => 'Room Data Deleted Successfully',
             ]);
         } catch (\Throwable $e) {
             return response()->json([

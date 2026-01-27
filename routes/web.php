@@ -6,6 +6,13 @@ use App\Http\Controllers\GuestsController;
 use App\Http\Controllers\RoomController;
 use App\Models\Room;
 use Illuminate\Support\Facades\Route;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
+Route::get('/cloudinary-test', function () {
+    return Cloudinary::upload(
+        public_path('images/test.jpg')
+    )->getSecurePath();
+});
 
 Route::get('/login', function () {
     return view('visitor/login');

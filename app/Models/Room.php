@@ -17,6 +17,7 @@ class Room extends Model
         'max_guests',
         'bed_type',
         'image',
+        'image_public_id',
         'status'
     ];
     
