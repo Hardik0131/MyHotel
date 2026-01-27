@@ -19,7 +19,7 @@
                 </div>
             @endif
         </div>
-        <form action="{{ route('admin.rooms.store') }}" method="POST" id="form" enctype="multipart/form-data">
+        <form action="{{ route('admin.rooms.store', [], false) }}" method="POST" id="form" enctype="multipart/form-data">
             @csrf
             <div class="input-group">
                 <label for="room_name">Rooms Name</label>
