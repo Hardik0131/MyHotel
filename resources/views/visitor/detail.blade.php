@@ -31,7 +31,7 @@
                         </p>
                     </div>
                 @endif --}}
-                <img src="{{ asset('storage/' . $room->image) }}" alt="">
+                <img src="{{ $room->image }}" alt="">
             </div>
             <div class="room_detail_name">
                 {{ $room->room_name }} Room

@@ -125,7 +125,7 @@
                                     Max Guest {{ $room->max_guests }}
                                 </p>
                             </div>
-                            <img src="{{ asset('storage/' . $room->image) }}" alt="">
+                            <img src="{{ $room->image }}" alt="">
                         </div>
                         <div class="booking_text">
                             <div class="booking_title">

@@ -6,7 +6,7 @@ use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cloudinary\Cloudinary;
 
 class RoomController extends Controller
 {
@@ -165,16 +165,22 @@ class RoomController extends Controller
             'status' => 'required|in:available,booked,maintenance',
         ]);
 
+        if (!$request->hasFile('image')) {
+            return back()->withErrors('Image file not received');
+        }
 
         $slug = Str::slug($request->room_name);
 
-        $upload = Cloudinary::upload(
+        $cloudinary = new Cloudinary(config('cloudinary.cloud_url'));
+
+        $upload = $cloudinary->uploadApi()->upload(
             $request->file('image')->getRealPath(),
             ['folder' => 'rooms']
         );
 
-        $imageUrl = $upload->getSecurePath();
-        $imagePublicId = $upload->getPublicId();
+        $imageUrl = $upload['secure_url'];
+        $imagePublicId = $upload['public_id'];
+
 
         Room::create([
             'room_name' => $request->room_name,
@@ -220,6 +226,8 @@ class RoomController extends Controller
             'status' => 'required|in:available,booked,maintenance',
         ]);
 
+        $cloudinary = new Cloudinary(config('cloudinary.cloud_url'));
+
         // default: keep old image
         $imageUrl = $room->image;
         $imagePublicId = $room->image_public_id;
@@ -227,18 +235,24 @@ class RoomController extends Controller
         if ($request->hasFile('image')) {
 
             // delete old image from Cloudinary
-            if ($room->image_public_id) {
-                Cloudinary::destroy($room->image_public_id);
+            if ($imagePublicId) {
+                $cloudinary->uploadApi()->destroy($room->image_public_id);
             }
 
             // upload new image
-            $upload = Cloudinary::upload(
+            if (!$request->hasFile('image')) {
+                return back()->withErrors([
+                    'image' => 'Image file not received. Please select an image.'
+                ]);
+            }
+
+            $upload = $cloudinary->uploadApi()->upload(
                 $request->file('image')->getRealPath(),
                 ['folder' => 'rooms']
             );
 
-            $imageUrl = $upload->getSecurePath();
-            $imagePublicId = $upload->getPublicId();
+            $imageUrl = $upload['secure_url'];
+            $imagePublicId = $upload['public_id'];
         }
 
         $room->update([
@@ -262,11 +276,13 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
 
+        $cloudinary = new Cloudinary(config('cloudinary.cloud_url'));
+
         try {
 
             // delete image from Cloudinary
             if ($room->image_public_id) {
-                Cloudinary::destroy($room->image_public_id);
+                $cloudinary->uploadApi()->destroy($room->image_public_id);
             }
 
             $room->delete();

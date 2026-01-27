@@ -58,7 +58,7 @@
                                 </p>
                             </div>
                         @endif
-                        <img src="{{ asset('storage/' . $room->image) }}" alt="">
+                        <img src="{{ $room->image }}" alt="">
                     </div>
                     <div class="rooms_page_booking_text">
                         <div class="rooms_page_booking_title">
