@@ -33,4 +33,4 @@ RUN echo "upload_max_filesize=20M" > /usr/local/etc/php/conf.d/uploads.ini \
 
 
 EXPOSE 80
-CMD php artisan migrate --force && apache2-foreground
+CMD ["apache2-foreground"]

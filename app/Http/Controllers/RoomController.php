@@ -156,25 +156,14 @@ class RoomController extends Controller
     public function store(Request $request)
     {
 
-        Log::info('STORE HIT', [
-            'has_file' => $request->hasFile('image'),
-            'all_files' => $request->allFiles(),
-            'all_input' => $request->except(['image']),
+        $request->validate([
+            'room_name' => 'required',
+            'price_per_night' => 'required|numeric',
+            'max_guests' => 'required',
+            'bed_type' => 'required',
+            'image' => 'required|image',
+            'status' => 'required',
         ]);
-
-        try {
-            $request->validate([
-                'room_name' => 'required',
-                'price_per_night' => 'required|numeric',
-                'max_guests' => 'required',
-                'bed_type' => 'required',
-                'image' => 'required|image',
-                'status' => 'required',
-            ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::error('VALIDATION FAILED', $e->errors());
-            throw $e;
-        }
 
 
         if (!$request->hasFile('image')) {
