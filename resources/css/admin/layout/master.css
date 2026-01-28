@@ -266,3 +266,56 @@
 .select-wrapper select:focus{
     outline: none;
 }
+
+/* Pagination */ 
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0;
+}
+
+.pagination-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.pagination .page-item{
+    position: relative;
+    border: 1px solid #e5e7eb;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.pagination .page-link{
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-item:hover{
+    border-color: gray;
+}
+
+.disabled{
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.active{
+    background-color: #1f3a8a;
+    color: #fff;
+    border-color: #1f3a8a;
+}
+
+.active:hover{
+    color: #fff;
+}
