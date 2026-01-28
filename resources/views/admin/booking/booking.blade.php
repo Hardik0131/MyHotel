@@ -46,29 +46,7 @@
                 </thead>
 
                 <tbody>
-                    @forelse($bookings as $booking)
-                        <tr>
-                            <td>{{ $booking->user_name ?: 'N/A' }}</td>
-                            <td>{{ $booking->room->room_name ?: 'N/A' }}</td>
-                            <td>{{ $booking->user_email ?: 'N/A' }}</td>
-                            <td>{{ $booking->check_in_date }}</td>
-                            <td>{{ $booking->check_out_date }}</td>
-                            <td>{{ $booking->created_at->timezone('Asia/Kolkata')->format('d-m-Y h:i A')  ?: 'N/A'}}</td>
-                            <td>{{ $booking->note ?: 'N/A' }}</td>
-                            <td id="action_btn">
-                                <div class="action_btn">
-                                    {{-- <a href="{{ route('admin.booking.edit', $booking) }}"
-                                        data-url="{{ route('admin.booking.edit', $booking) }}" class="edit-rooms"><i
-                                            class="ri-edit-2-line"></i></a> --}}
-                                    <i class="ri-delete-bin-line booking-delete-btn" data-id="{{ $booking->id }}"></i>
-                                </div>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="4">No Record Found</td>
-                        </tr>
-                    @endforelse
+                    @include('admin.layout.row')
                 </tbody>
             </table>
         </div>
