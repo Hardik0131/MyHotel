@@ -13,7 +13,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $bookings = Booking::with('room')->get();
+        $bookings = Booking::with('room')->orderBy('id', 'desc')->paginate(1);
 
         if ($request->ajax()) {
             return view('admin.booking.booking', compact('bookings'));
