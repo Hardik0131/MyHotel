@@ -7,6 +7,7 @@ use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Cloudinary\Cloudinary;
+use Illuminate\Support\Facades\Log;
 
 class RoomController extends Controller
 {
@@ -169,14 +170,30 @@ class RoomController extends Controller
             return back()->withErrors('Image file not received');
         }
 
+        
         $slug = Str::slug($request->room_name);
+        
+        try {
+            Log::info('Cloudinary upload attempt');
 
-        $cloudinary = new Cloudinary(config('cloudinary.cloud_url'));
+            $cloudinary = new Cloudinary(config('cloudinary.cloud_url'));
 
-        $upload = $cloudinary->uploadApi()->upload(
-            $request->file('image')->getRealPath(),
-            ['folder' => 'rooms']
-        );
+            $upload = $cloudinary->uploadApi()->upload(
+                $request->file('image')->getRealPath(),
+                ['folder' => 'rooms']
+            );
+
+            Log::info('Cloudinary upload success', [
+                'public_id' => $upload['public_id'] ?? null,
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('Cloudinary upload failed', [
+                'error' => $e->getMessage(),
+            ]);
+
+            return back()->withErrors('Image upload failed on server');
+        }
+
 
         $imageUrl = $upload['secure_url'];
         $imagePublicId = $upload['public_id'];
