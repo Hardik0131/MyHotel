@@ -128,7 +128,7 @@ class RoomController extends Controller
 
     public function index(Request $request)
     {
-        $rooms = Room::orderBy('id', 'desc')->paginate(5);
+        $rooms = Room::orderBy('id', 'desc')->paginate(3);
 
 
         if($request->ajax() && $request->has('page')){
