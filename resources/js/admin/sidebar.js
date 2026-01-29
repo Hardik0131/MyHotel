@@ -36,9 +36,10 @@ $(document).ready(function () {
         }
     });
 
-    $(".profile-icon").click(function (event) {
+    $(".profile-icon").on("click", function (event) {
         event.stopPropagation();
-
+        
+        $(".profile-detail").toggleClass("active");
         if ($(".profile-detail").hasClass("active")) {
             $(".profile-icon i").removeClass("bx-user").addClass("bxs-user");
         } else {
@@ -46,16 +47,16 @@ $(document).ready(function () {
         }
     });
 
-    $(document).click(function () {
+    $(document).on("click", function () {
         $(".profile-detail").removeClass("active");
         $(".profile-icon i").removeClass("bxs-user").addClass("bx-user");
     });
 
-    $(".profile-detail").click(function (event) {
-        event.stopPropagation();
-    });
+    // $(".profile-detail").on("click", function (event) {
+    //     event.stopPropagation();
+    // });
 
-    $("projects .projects-search-box input").click(function () {
+    $("projects .projects-search-box input").on("click", function () {
         $(this).css("border", "none");
     });
 
