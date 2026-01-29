@@ -2,12 +2,6 @@
 
 @section('title', 'Home')
 
-@section('vite')
-
-    @vite(['resources/css/home.css'])
-
-@endsection
-
 @section('content')
     <section>
         <div class="body_part">
