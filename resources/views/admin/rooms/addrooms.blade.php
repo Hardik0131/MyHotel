@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="btn">
-                <button type="submit">Add rooms</button>
+                <button type="submit" class="add_rooms">Add rooms</button>
                 <a href="{{ route('admin.rooms') }}" data-url="{{ route('admin.rooms', [], false) }}" class="return-rooms">Return
                     to rooms page?</a>
             </div>
