@@ -200,10 +200,12 @@ html.sidebar-open .sidebar~.home-section {
     top: 13px;
     right: 25px;
     font-size: 22px;
+    list-style: none;
 }
 
 .admin-nav .profile-icon i {
     border: 3px solid #fff;
+    cursor: pointer;
     padding: 5px;
     border-radius: 50%;
 }
@@ -221,8 +223,9 @@ html.sidebar-open .sidebar~.home-section {
     display: flex;
     flex-direction: column;
     transition: all 0.6s ease;
-    opacity: 0;
+    display: none;
 }
+
 
 .admin-nav .profile-detail li a {
     width: 120px;
@@ -230,20 +233,23 @@ html.sidebar-open .sidebar~.home-section {
     display: flex;
     gap: 8px;
     justify-content: center;
+    text-decoration: none;
     text-align: center;
     align-items: center;
     transition: all 0.4s ease;
+    color: #fff;
 }
 
 .admin-nav .active {
-    opacity: 1;
+    display: block;
 }
 
-.profile-detail li:hover {
+.profile-detail li:hover a{
     background-color: white;
     color: black;
     border: none;
     border-radius: 7px;
+    list-style: none;
 }
 
 .sidebar li a.active {

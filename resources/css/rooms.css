@@ -14,7 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .rooms_page_booking_room {
@@ -173,7 +173,7 @@
 
 @media (max-width:1530px) {
     .rooms_page_card {
-        justify-content: center;
+        justify-content: center
     }
 }
 

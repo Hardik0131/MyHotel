@@ -107,6 +107,10 @@ nav ul li a {
     display: none;
 }
 
+.admin_btn{
+    background: red;
+}
+
 @media (max-width:1320px) {
     .nav_item ul {
         gap: 25px;

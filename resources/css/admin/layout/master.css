@@ -28,9 +28,9 @@
     align-items: center;
 }
 
-.search-bar .searchInput {
+.search-bar #searchInput {
     background-color: white;
-    padding: 5px;
+    border: none;
 }
 
 .search-box input:focus {

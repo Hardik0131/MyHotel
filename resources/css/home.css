@@ -32,7 +32,7 @@ html {
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     /* filter: blur(5px); */
@@ -64,6 +64,7 @@ html {
     z-index: 99;
     display: flex;
     flex-direction: column;
+    margin-top: 120px;
 }
 
 .home_text_text {
@@ -316,7 +317,7 @@ html {
     text-align: center;
 }
 
-.booking_detail button:hover{
+.booking_detail button:hover {
     background-color: #083F3F;
     transform: translateY(-2px);
     transition: all 0.5s ease;
@@ -500,6 +501,8 @@ html {
 }
 
 @media (max-width:1400px) {
+
+
     .card {
         width: 200px;
     }
@@ -513,6 +516,14 @@ html {
     .headline {
         font-size: 5vw;
         font-weight: 600;
+    }
+
+    .home_top_part{
+        justify-content: start;
+    }
+
+    .home_text{
+        margin-top: 40px;
     }
 }
 
@@ -583,6 +594,10 @@ html {
 
 @media (max-width:650px) {
 
+    .scroll-indicator {
+        display: none;
+    }
+
     .feature_cards {
         margin: 10px 0;
     }
@@ -639,5 +654,17 @@ html {
 
     .amenities_card {
         width: 250px;
+    }
+}
+
+@media (max-width:435px){
+    .home_top_part{
+        height: 120vh;
+    }
+}
+
+@media (max-width:380px){
+    .booking_room{
+        width: 300px;
     }
 }
