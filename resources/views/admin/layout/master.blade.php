@@ -22,6 +22,7 @@
         'resources/js/admin/rooms.js',
         'resources/js/admin/booking.js',
     ])
+     @vite(['resources/js/admin.js', 'resources/css/app.css'])
 </head>
 
 <body>
