@@ -25,6 +25,7 @@ export default defineConfig({
                 "resources/css/admin/rooms.css",
                 "resources/js/admin/rooms.js",
                 "resources/js/admin/sidebar.js",
+                "resources/js/admin/booking.js",
                 "resources/js/admin.js",
                 "resources/js/app.js",
                 "resources/js/booking.js",
