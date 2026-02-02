@@ -9,14 +9,6 @@
 @endsection
 
 @section('content')
-
-    <nav class="login_nav">
-        <div class="web_logo" id="logo">
-            <img src="images/logo.png" alt="">
-            <h2>Your <br> Comfort <br> Our <br> Priority</h2>
-        </div>
-    </nav>
-
     <div class="login_block" id="login_block">
         <div class="login_img" id="login_img">
             <img src="images/login_block.webp" alt="img__">
