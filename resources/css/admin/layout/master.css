@@ -1,6 +1,17 @@
+a {
+    text-decoration: none;
+    color: black;
+}
 
+li {
+    list-style: none;
+}
 
-.sub-nav{
+button {
+    border: none;
+}
+
+.sub-nav {
     display: flex;
     justify-content: space-between;
     color: #11101d;
@@ -8,17 +19,17 @@
 
 }
 
-.sub-nav .text{
+.sub-nav .text {
     font-size: 25px;
     font-weight: 500;
 }
 
-.search-bar{
+.search-bar {
     display: flex;
     justify-content: space-between;
 }
 
-.search-bar .search-box{
+.search-bar .search-box {
     padding: 10px;
     border: 2px solid rgb(124, 111, 111);
     border-radius: 10px;
@@ -31,6 +42,7 @@
 .search-bar #searchInput {
     background-color: white;
     border: none;
+    font-size: 16px;
 }
 
 .search-box input:focus {
@@ -39,7 +51,7 @@
     border-color: inherit;
 }
 
-.table{
+.table {
     max-width: 100%;
     min-width: 100%;
     border-collapse: separate;
@@ -48,11 +60,11 @@
     border: 1px solid #ccc;
 }
 
-.table thead{
+.table thead {
     max-width: 100%;
 }
 
-.table thead th{
+.table thead th {
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
     padding: 10px 15px;
@@ -61,71 +73,72 @@
     text-align: start;
 }
 
-.table thead tr th:last-child{
+.table thead tr th:last-child {
     border-right: none;
     border-top-right-radius: 12px;
 }
 
-.table thead tr th:first-child{
+.table thead tr th:first-child {
     border-top-left-radius: 12px;
 }
 
-.table thead tr th:nth-child(even){
+.table thead tr th:nth-child(even) {
     background-color: #c8bcff;
     color: #000;
 }
 
-.table thead tr th:nth-child(odd){
+.table thead tr th:nth-child(odd) {
     background-color: #a48fff;
     color: #000;
 }
 
-.table tbody{
+.table tbody {
     max-width: 100%;
 }
 
-.table tbody td{
+.table tbody td {
     border-bottom: 1px solid #ccc;
     padding: 10px 15px;
     text-align: start;
     border-right: 1px solid #ccc;
 }
 
-.table tbody tr:last-child td{
+.table tbody tr:last-child td {
     border-bottom: none;
 }
 
-.table tbody td:last-child{
+.table tbody td:last-child {
     border-right: none;
 }
 
 
-#form{
+#form {
     background-color: transparent;
-    width: 45%; 
+    width: 45%;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.input-group{
+.input-group {
     display: flex;
     flex-direction: column;
     gap: 9px;
 }
 
-.input-group label{
+.input-group label {
     font-size: 17px;
     font-weight: 400;
 }
 
-.input-group input{
+.input-group input {
     border: 1px solid #928e8e;
     padding: 5px 10px;
     border-radius: 5px;
+    font-size: 16px;
 }
 
-.input-group input:focus{
+.input-group input:focus {
     outline: none;
 }
 
@@ -135,30 +148,30 @@
     transition: 0.2s ease;
 }
 
-.btn{
+.btn {
     margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.btn button{
+.btn button {
     background-color: #1367ff;
     color: white;
     padding: 10px;
     border-radius: 5px;
 }
 
-.btn a{
+.btn a {
     color: #1367ff;
     text-decoration: underline;
 }
 
-.alert_message{
+.alert_message {
     width: 45%;
 }
 
-.error{
+.error {
     display: flex;
     align-items: center;
     background-color: #fbecb9;
@@ -175,7 +188,7 @@
     transition: all 0.5s ease;
 }
 
-.success{
+.success {
     display: flex;
     align-items: center;
     background-color: #d4edda;
@@ -189,38 +202,38 @@
     transition: all 0.5s ease;
 }
 
-.bx-x{
+.bx-x {
     font-size: 19px;
     cursor: pointer;
 }
 
-.ri-edit-2-line{
+.ri-edit-2-line {
     color: blue;
     font-size: 18px;
 }
 
-.ri-edit-2-line:hover{
+.ri-edit-2-line:hover {
     color: darkblue;
 }
 
-.ri-delete-bin-line{
+.ri-delete-bin-line {
     color: red;
     font-size: 18px;
     cursor: pointer;
 }
 
-.ri-delete-bin-line:hover{
+.ri-delete-bin-line:hover {
     color: darkred;
 }
 
-.action_btn{
+.action_btn {
     display: flex;
     align-items: center;
     justify-content: start;
     gap: 10px;
 }
 
-.alert{
+.alert {
     margin-top: 25px;
 }
 
@@ -252,32 +265,47 @@
 
 */
 
-.select-wrapper{
+.select-wrapper {
     border: 1px solid #928e8e;
     padding: 5px 10px;
     border-radius: 5px;
     margin-top: 9px;
 }
 
-.select-wrapper select{
+.select-wrapper select {
     width: 100%;
+    border: none;
 }
 
-.select-wrapper select:focus{
+.select-wrapper select:focus {
     outline: none;
 }
 
-/* Pagination */ 
+/* Pagination */
 
-.pagination{
+/* .pagination a {
+    text-decoration: none;
+    color: black;
+}
+
+.pagination li {
     list-style: none;
+}
+
+.pagination button {
+    border: none;
+} */
+
+.pagination {
+    list-style: none;
+    text-decoration: none;
     display: flex;
     justify-content: center;
     gap: 10px;
     padding: 0;
 }
 
-.pagination-nav{
+.pagination-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -285,37 +313,38 @@
 }
 
 
-.pagination .page-item{
+.pagination .page-item {
     position: relative;
     border: 1px solid #e5e7eb;
     font-size: 16px;
     border-radius: 6px;
 }
 
-.pagination .page-link{
+.pagination .page-link {
     min-width: 36px;
     height: 36px;
     display: flex;
     padding: 0 10px;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
-.page-item:hover{
+.page-item:hover {
     border-color: gray;
 }
 
-.disabled{
+.disabled {
     opacity: 0.6;
     pointer-events: none;
 }
 
-.active{
+.active {
     background-color: #1f3a8a;
     color: #fff;
     border-color: #1f3a8a;
 }
 
-.active:hover{
+.active:hover {
     color: #fff;
 }
