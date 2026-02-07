@@ -81,6 +81,7 @@
 
 .contact_form {
     width: 100%;
+    height: fit-content;
     padding: 25px;
     border: none;
     border-radius: 15px;
@@ -88,13 +89,18 @@
     box-shadow: -12px 12px 8px rgba(0, 0, 0, 0.3);
 }
 
-.input-group {
+.contact_heading_text{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.form_group {
     position: relative;
     width: 100%;
     margin: 20px 0;
 }
 
-.input-group input {
+.form_group input {
     width: 100%;
     background: none;
     background-color: none;
@@ -105,7 +111,7 @@
     outline: none;
 }
 
-.input-group label {
+.form_group label {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -116,7 +122,7 @@
     transition: all ease 0.5s;
 }
 
-.input-group textarea {
+.form_group textarea {
     width: 100%;
     height: 150px;
     background: none;
@@ -125,31 +131,31 @@
     border-radius: 10px;
 }
 
-.input-group textarea:focus+label,
-.input-group textarea:not(:placeholder-shown)+label {
+.form_group textarea:focus+label,
+.form_group textarea:not(:placeholder-shown)+label {
     top: -8px;
-    background-color: rgb(50, 51, 55);
-    color: rgb(182, 174, 174);
+    background-color: rgb(255, 247, 237);
+    color: #111;
     font-size: 15px;
 }
 
-.input-group textarea:focus,
-.input-group textarea:not(:placeholder-shown) {
+.form_group textarea:focus,
+.form_group textarea:not(:placeholder-shown) {
     border: 2px solid rgb(32, 7, 255);
     color: rgb(255, 255, 255);
 }
 
-.input-group input:focus+label,
-.input-group input:not(:placeholder-shown)+label {
+.form_group input:focus+label,
+.form_group input:not(:placeholder-shown)+label {
     top: -8px;
-    background-color: rgb(50, 51, 55);
-    color: rgb(182, 174, 174);
+    background-color: rgb(255, 247, 237);
+    color: #111;
     font-size: 15px;
 
 }
 
-.input-group input:focus,
-.input-group input:not(:placeholder-shown) {
+.form_group input:focus,
+.form_group input:not(:placeholder-shown) {
     border: 2px solid rgb(32, 7, 255);
     color: rgb(255, 255, 255);
 }
@@ -158,12 +164,13 @@
     width: 30%;
     background: linear-gradient(45deg, #2a5b48, #1c2e2a, #152320);
     border: none;
+    color: #fff;
     border-radius: 25px;
     padding: 10px;
     font-size: 20px;
     font-weight: 500;
     text-align: center;
-    box-shadow: -10px 10px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     overflow: hidden;
 }
@@ -183,12 +190,13 @@
     width: 30%;
     background: linear-gradient(45deg, #a70606, #69130c, #530303);
     border: none;
+    color: #fff;
     border-radius: 25px;
     padding: 10px;
     font-size: 20px;
     font-weight: 500;
     text-align: center;
-    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     overflow: hidden;
 }
