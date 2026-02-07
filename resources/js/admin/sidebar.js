@@ -1,3 +1,13 @@
+function loadPage(event, iden) {
+    $(document).on(event, iden, function (e) {
+        e.preventDefault();
+
+        let url = $(this).data("url");
+        $(".main-content").load(url);
+        history.pushState(null, "", url);
+    });
+}
+
 $(document).ready(function () {
     // Sidebar toggle
 
@@ -38,7 +48,7 @@ $(document).ready(function () {
 
     $(".profile-icon").on("click", function (event) {
         event.stopPropagation();
-        
+
         $(".profile-detail").toggleClass("active");
         if ($(".profile-detail").hasClass("active")) {
             $(".profile-icon i").removeClass("bx-user").addClass("bxs-user");
@@ -85,16 +95,6 @@ $(document).ready(function () {
         });
     });
 
-    function loadPage(event, iden) {
-        $(document).on(event, iden, function (e) {
-            e.preventDefault();
-
-            let url = $(this).data("url");
-            $(".main-content").load(url);
-            history.pushState(null, "", url);
-        });
-    }
-
     loadPage("click", ".add-rooms");
     loadPage("click", ".edit-rooms");
     loadPage("click", ".return-rooms");
@@ -107,7 +107,7 @@ $(document).ready(function () {
     loadPage("click", ".return-sells");
     loadPage("click", ".edit-sells");
 
-    loadPage("click", ".invoice");
+    // loadPage("click", ".invoice");
 
     window.onpopstate = function () {
         $(".main-content").load(location.pathname, function () {
