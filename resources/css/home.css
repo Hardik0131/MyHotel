@@ -6,8 +6,8 @@
 }
 
 * {
-    /* padding: 0;
-    margin: 0; */
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', 'sans-serif';
 }
@@ -17,6 +17,19 @@ html {
     width: 100%;
     height: 100%;
     background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+button{
+    border: none;
 }
 
 .body_part {
@@ -32,7 +45,7 @@ html {
     width: 100%;
     height: 100vh;
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     /* filter: blur(5px); */
@@ -64,7 +77,7 @@ html {
     z-index: 99;
     display: flex;
     flex-direction: column;
-    margin-top: 120px;
+    /* margin-top: 120px; */
 }
 
 .home_text_text {
@@ -73,6 +86,7 @@ html {
     justify-content: center;
     text-align: center;
     gap: 10px;
+    /* padding-top: 80px; */
 }
 
 .headline {
@@ -168,6 +182,7 @@ html {
     border-radius: 7px;
     border: none;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
 .home_text button:hover {
@@ -314,6 +329,7 @@ html {
     padding: 6px 60px;
     cursor: pointer;
     border-radius: 3px;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -406,6 +422,7 @@ html {
 
 .amenities_image img {
     border: none;
+    width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -433,12 +450,17 @@ html {
 
 .footer_booking_btn button {
     padding: 10px 30px;
-    background-color: #c25100;
+    background-color: #c73500;
     font-weight: 500;
     font-size: 18px;
     border-radius: 5px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    border: none;
+}
+
+.footer_booking_btn button a {
+    color: white;
 }
 
 /* 
@@ -518,11 +540,11 @@ html {
         font-weight: 600;
     }
 
-    .home_top_part{
+    .home_top_part {
         justify-content: start;
     }
 
-    .home_text{
+    .home_text {
         margin-top: 40px;
     }
 }
@@ -657,14 +679,14 @@ html {
     }
 }
 
-@media (max-width:435px){
-    .home_top_part{
+@media (max-width:435px) {
+    .home_top_part {
         height: 120vh;
     }
 }
 
-@media (max-width:380px){
-    .booking_room{
+@media (max-width:380px) {
+    .booking_room {
         width: 300px;
     }
 }
