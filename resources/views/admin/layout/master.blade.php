@@ -11,17 +11,7 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    @vite([
-        'resources/css/app.css',
-        'resources/css/admin/layout/sidebar.css',
-        'resources/css/admin/layout/master.css',
-        'resources/css/admin/rooms.css',
-        'resources/css/admin/booking.css',
-        'resources/js/app.js',
-        'resources/js/admin/sidebar.js',
-        'resources/js/admin/rooms.js',
-    ])
-     @vite(['resources/js/admin.js', 'resources/css/app.css'])
+    @vite(['resources/js/admin.js'])
 </head>
 
 <body>
@@ -39,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('admin.logout') }}">
                         <i class="bx bx-log-out"></i>
                         <span>Logout</span>
                     </a>
