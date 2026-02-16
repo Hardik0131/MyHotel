@@ -1,8 +1,8 @@
 @extends('layout.master')
 
-@section('vite')
+{{-- @section('vite')
     @vite('resources/css/contact.css')
-@endsection
+@endsection --}}
 
 @section('content')
     <section>
@@ -90,21 +90,21 @@
                         </div>
                     @endif
                 </div>
-                <form action="" method="POST" class="mt-3">
+                <form action="" method="POST" class="mt-3" id="contact_form">
                     @csrf
-                    <div class="input-group">
+                    <div class="form_group">
                         <input type="text" class="form-control" placeholder="" id="name" name="name" required>
                         <label for="Name">Name</label>
                     </div>
-                    <div class="input-group">
+                    <div class="form_group">
                         <input type="email" class="form-control" placeholder="" id="email" name="email" required>
                         <label for="email">Email</label>
                     </div>
-                    <div class="input-group">
+                    <div class="form_group">
                         <input type="text" class="form-control" placeholder="" id="subject" name="subject">
                         <label for="subject">Subject</label>
                     </div>
-                    <div class="input-group">
+                    <div class="form_group">
                         <textarea name="message" id="message" placeholder=" "></textarea>
                         <label for="message">Message</label>
                     </div>

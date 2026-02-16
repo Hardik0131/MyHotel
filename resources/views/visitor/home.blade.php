@@ -2,11 +2,11 @@
 
 @section('title', 'Home')
 
-@section('vite')
+{{-- @section('vite')
 
     @vite(['resources/css/home.css'])
 
-@endsection
+@endsection --}}
 
 @section('content')
     <section>

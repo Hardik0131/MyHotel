@@ -1,8 +1,8 @@
 @extends('layout.master')
-
+{{-- 
 @section('vite')
     @vite('resources/css/rooms.css')
-@endsection
+@endsection --}}
 
 @section('content')
     <section>

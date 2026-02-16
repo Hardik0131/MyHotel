@@ -1,8 +1,8 @@
 @extends('layout.master')
 
-@section('vite')
+{{-- @section('vite')
     @vite('resources/css/rooms.css')
-@endsection
+@endsection --}}
 
 @section('content')
     <section>
@@ -105,9 +105,11 @@
                 Ready to Experience Comfort Like Never Before?
             </div>
             <div class="footer_booking_btn">
-                <a href="{{ route('hotel.home') }}">
-                    <button>Book Your Stay</button>
-                </a>
+                <button>
+                    <a href="{{ route('hotel.home') }}">
+                        Book Your Stay
+                    </a>
+                </button>
             </div>
         </div>
     </section>

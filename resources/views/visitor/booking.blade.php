@@ -1,8 +1,8 @@
 @extends('layout.master')
 
-@section('vite')
+{{-- @section('vite')
     @vite(['resources/css/booking.css', 'resources/js/booking.js'])
-@endsection
+@endsection --}}
 
 @section('content')
     <section id="booking_top_part">

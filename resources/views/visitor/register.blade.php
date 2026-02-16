@@ -2,11 +2,11 @@
 
 @section('title', 'Register')
 
-@section('vite')
+{{-- @section('vite')
 
     @vite(['resources/css/register.css', 'resources/js/register.js']);
 
-@endsection
+@endsection --}}
 
 @section('content')
 
@@ -57,5 +57,4 @@
             </div>
         </div>
     </div>
-
 @endsection

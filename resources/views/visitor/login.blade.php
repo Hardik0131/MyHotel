@@ -1,46 +1,72 @@
-@extends('layout.master')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Login')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+    <title>@yield('title', 'Hotel')</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    @vite(['resources/css/login.css', 'resources/js/app.js', 'resources/css/app.css'])
 
-@section('vite')
+</head>
 
-    @vite(['resources/css/login.css', 'resources/js/login.js'])
-
-@endsection
-
-@section('content')
+<body>
+    <nav class="login_nav">
+        <div class="web_logo" id="logo">
+            <img src="{{ asset('images/logo.png') }}" alt="">
+            <h2>Your <br> Comfort <br> Our <br> Priority</h2>
+        </div>
+    </nav>
     <div class="login_block" id="login_block">
         <div class="login_img" id="login_img">
-            <img src="images/login_block.webp" alt="img__">
+            <img src="{{ asset('images/login_block.webp') }}" alt="img__">
         </div>
         <div class="login_form_block" id="login_form_block">
             <div class="login_text" id="login_text">
                 <h2>Sign in to Your Account</h2>
                 <p>Access Your Hotel Managment Dashboard</p>
             </div>
+            @if (Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}</div>
+            @endif
+            @if (Session::has('error'))
+                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+            @endif
             <div class="login_form" id="login_form">
-                <form action="" class="form" id="form">
+                <form action="{{ route('admin.authenticate') }}" class="form" id="form" method="POST">
+                    @csrf
                     <div class="form-control">
                         <label for="email">Email Address</label>
                         <div class="input_container">
                             <span><i class="ri-mail-line"></i></span>
-                            <input type="email" placeholder="name@example.com">
+                            <input type="email" placeholder="name@example.com" name="email" id="email">
                         </div>
+                        @error('email')
+                            <p class="invalid-feedback">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-control">
                         <label for="password">Password</label>
                         <div class="input_container">
                             <span><i class="ri-lock-line"></i></span>
-                            <input type="password" placeholder="Enter your password">
+                            <input type="password" placeholder="Enter your password" name="password" id="password">
                             <span class="eye_icon"><i class="ri-eye-line"></i></span>
                         </div>
+                        @error('password')
+                            <p class="invalid-feedback">{{ $message }}</p>
+                        @enderror
                     </div>
-                    <a href="">Forgot Password ?</a>
+                    {{-- <a href="">Forgot Password ?</a> --}}
                     <button>Log In</button>
                 </form>
-                <a href="" class="register_link">Don't Have an Account ? Register Here !</a>
+                <a href="{{ route('hotel.home') }}" class="register_link">Go To Site !</a>
             </div>
         </div>
     </div>
+</body>
 
-@endsection
+</html>
