@@ -10,8 +10,10 @@
     <title>@yield('title', 'Hotel')</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
-    @vite(['resources/css/app.css', 'resources/css/nav.css'])
-    @yield('vite')
+    {{-- @vite(['resources/css/home.css', 'resources/css/nav.css']) --}}
+    @vite(['resources/js/visitor.js'])
+    {{-- @yield('vite') --}}
+    
 </head>
 
 <body>
@@ -19,7 +21,7 @@
     <main style="margin-top: 80px">
         @yield('content')
     </main>
-    <script src="{{ asset("js/admin.js") }}"></script>
+    {{-- <script src="{{ asset("js/admin.js") }}"></script> --}}
 </body>
 
 </html>
