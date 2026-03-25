@@ -10,7 +10,7 @@
     <title>@yield('title', 'Hotel')</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
-    @vite(['resources/css/login.css', 'resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/js/admin.js'])
 
 </head>
 
@@ -31,19 +31,23 @@
                 <p>Access Your Hotel Managment Dashboard</p>
             </div>
             @if (Session::has('success'))
-                <div class="alert alert-success">{{ Session::get('success') }}</div>
+                <div class="alert alert-success" role="alert">
+                    <i class="ri-check-line"></i> {{ Session::get('success') }}
+                </div>
             @endif
             @if (Session::has('error'))
-                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                <div class="alert alert-danger" role="alert">
+                    <i class="ri-error-warning-line"></i> {{ Session::get('error') }}
+                </div>
             @endif
             <div class="login_form" id="login_form">
-                <form action="{{ route('admin.authenticate') }}" class="form" id="form" method="POST">
+                <form action="{{ route('admin.authenticate') }}" class="login_form" id="login_form_form" method="POST">
                     @csrf
                     <div class="form-control">
                         <label for="email">Email Address</label>
                         <div class="input_container">
                             <span><i class="ri-mail-line"></i></span>
-                            <input type="email" placeholder="name@example.com" name="email" id="email">
+                            <input type="email" placeholder="name@example.com" name="email" id="login_email">
                         </div>
                         @error('email')
                             <p class="invalid-feedback">{{ $message }}</p>
@@ -53,7 +57,7 @@
                         <label for="password">Password</label>
                         <div class="input_container">
                             <span><i class="ri-lock-line"></i></span>
-                            <input type="password" placeholder="Enter your password" name="password" id="password">
+                            <input type="password" placeholder="Enter your password" name="password" id="login_password">
                             <span class="eye_icon"><i class="ri-eye-line"></i></span>
                         </div>
                         @error('password')
@@ -67,6 +71,29 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const eyeIcon = document.querySelector('.eye_icon');
+            const passwordInput = document.getElementById('login_password');
+
+            if (eyeIcon && passwordInput) {
+                eyeIcon.addEventListener('click', function() {
+                    const icon = eyeIcon.querySelector('i');
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('ri-eye-line');
+                        icon.classList.add('ri-eye-off-line');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('ri-eye-off-line');
+                        icon.classList.add('ri-eye-line');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

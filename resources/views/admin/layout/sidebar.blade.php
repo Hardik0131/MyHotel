@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div class="logo-details">
-        <div class="logo_name">Product</div>
+        <div class="logo_name">Hotel</div>
         <i class="bx bx-menu" id="btn"></i>
     </div>
 
@@ -22,13 +22,6 @@
                 <span class="links_name">Booking</span>
             </a>
             <span class="tooltip">Booking</span>
-        </li>
-        <li>
-            <a>
-                <i class="ri-unsplash-line"></i>
-                <span class="links_name">Sells</span>
-            </a>
-            <span class="tooltip">Sells</span>
         </li>
         {{-- <li>
             <a href="#" class="sidebar-link">

@@ -4,8 +4,11 @@
             <img src="{{ asset('images/logo.png') }}" alt="">
         </a>
     </div>
+    <div class="menu-mobile">
+        
+    </div>
     <div class="nav_item">
-        <ul class="nav_menu">
+        <ul class="nav_menu" id="mobileNavMenu">
             <li><a href="{{ route('hotel.home') }}"
                     class="{{ request()->routeIs('hotel.home') ? 'active' : '' }}">Home</a></li>
             <li><a href="{{ route('hotel.room') }}"
@@ -14,12 +17,17 @@
             </li>
             <li id="admin_login_btn">
                 <button>
-                    <a href="">Admin Login</a>
+                    <a href="{{ route('admin.login') }}" class="admin-login-link">Admin Login</a>
                 </button>
             </li>
         </ul>
         <ul class="nav_menu_icon">
-            <li><i class="ri-menu-3-line"></i></li>
+            <li>
+                <button type="button" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false"
+                    style="background: transparent; border: none; cursor: pointer;">
+                    <i class="ri-menu-3-line"></i>
+                </button>
+            </li>
         </ul>
     </div>
 </nav>
