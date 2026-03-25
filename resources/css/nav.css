@@ -1,23 +1,8 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-@font-face {
-    font-family: 'mont';
-    src: url('text/Montserrat.ttf');
+:root {
+    --theme-primary: #13523f;
+    --theme-primary-hover: #0f4333;
+    --theme-on-primary: #ffffff;
 }
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', 'sans-serif';
-}
-
-body,
-html {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-} */
 
 nav {
     z-index: 100;
@@ -39,14 +24,14 @@ nav ul li a {
     padding: 5px 10px;
 }
 
-.active{
+.active {
     border-bottom: 4px solid rgb(133, 60, 0);
     transition: all ease 0.5s;
     display: flex;
     padding-bottom: 5px;
 }
 
-.nav_item li .active{
+.nav_item li .active {
     transition: all ease 0.5s;
     color: brown;
 }
@@ -54,16 +39,18 @@ nav ul li a {
 .web_logo {
     display: flex;
     padding: 12px 0 12px 70px;
+    text-decoration: none;
 }
 
 .web_logo img {
     width: 100px;
 }
 
-.nav_item{
+.nav_item {
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .nav_item ul {
@@ -71,8 +58,10 @@ nav ul li a {
     display: flex;
     gap: 35px;
     font-size: 18px;
-    padding-right: 30px;  /* changes */
+    padding-right: 30px;
     font-weight: 500;
+    list-style: none;
+    margin: 0;
 }
 
 .nav_item li {
@@ -81,6 +70,7 @@ nav ul li a {
     align-self: center;
     padding-bottom: 5px;
     transition: all ease 0.5s;
+    list-style: none;
 }
 
 .nav_item a {
@@ -89,6 +79,8 @@ nav ul li a {
     gap: 15px;
     justify-content: center;
     text-align: center;
+    text-decoration: none;
+    color: #1e1e1e;
 }
 
 .nav_item i {
@@ -107,50 +99,184 @@ nav ul li a {
     display: none;
 }
 
-.admin_btn{
-    background: red;
+.nav_menu_icon {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-@media (max-width:1320px) {
+.nav_menu_icon li {
+    list-style: none;
+}
+
+/* Admin Login Button - Theme Colors */
+#admin_login_btn button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+#admin_login_btn button a {
+    background-color: var(--theme-primary);
+    color: var(--theme-on-primary);
+    border-radius: 5px;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#admin_login_btn button a:hover {
+    background-color: var(--theme-primary-hover);
+}
+
+/* Desktop Navigation */
+@media (min-width: 801px) {
+    .nav_item ul.nav_menu {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav_menu_icon {
+        display: none;
+    }
+}
+
+/* Tablet and Mobile Navigation */
+@media (max-width: 1320px) {
     .nav_item ul {
         gap: 25px;
         padding-right: 20px;
     }
 }
 
-@media (max-width:800px) {
-
+@media (max-width: 800px) {
     .web_logo {
         padding: 12px 0 12px 30px;
     }
 
-    .nav_item ul {
-        padding-right: 30px;
+    .nav_item {
+        position: relative;
+        overflow: visible;
     }
 
-    .nav_item .nav_menu_icon .ri-menu-3-line {
+    /* Show menu icon on mobile */
+    .nav_item .ri-menu-3-line {
         display: block;
+        z-index: 130;
     }
 
+    .nav_menu_icon {
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
+    }
+
+    .nav_menu_icon li {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Mobile Menu - Slides down from top */
     .nav_item ul.nav_menu {
-        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 0;
+        padding: 0;
+        background-color: #f1f0ff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        flex-direction: column;
+        gap: 0;
+        z-index: 125;
+        list-style: none;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        margin: 0;
+    }
+
+    /* Show menu when open class is present - slide down animation */
+    .nav_item ul.nav_menu.open {
+        max-height: calc(100vh - 80px);
+        padding: 16px;
+        gap: 16px;
+    }
+
+    /* Mobile menu items */
+    .nav_item ul.nav_menu li {
+        height: auto;
+        width: 100%;
+        padding: 0;
+        align-self: auto;
+        list-style: none;
+    }
+
+    .nav_item ul.nav_menu li a {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 14px 12px;
+        color: #1e1e1e;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.2s ease;
+    }
+
+    .nav_item ul.nav_menu li a:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .nav_item ul.nav_menu li a.active {
+        background-color: rgba(19, 82, 63, 0.1);
+        color: #13523f;
+        font-weight: 600;
+        border-left: 4px solid #13523f;
+        padding-left: 8px;
+    }
+
+    /* Full-width admin button on mobile */
+    #admin_login_btn {
+        width: 100%;
+    }
+
+    #admin_login_btn button {
+        width: 100%;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    #admin_login_btn button a {
+        width: 100%;
+        padding: 14px 12px !important;
+        text-align: left;
+        justify-content: flex-start;
     }
 }
 
-@media (max-width:550px) {
+@media (max-width: 550px) {
     .web_logo {
         padding: 12px 0 12px 10px;
     }
 
-    .nav_item ul {
-        padding-right: 10px;
+    .web_logo img {
+        width: 80px;
     }
 
-    .nav_item .nav_menu_icon .ri-menu-3-line {
-        display: block;
+    .nav_menu_icon {
+        padding-right: 12px;
     }
 
-    .nav_item ul.nav_menu {
-        display: none;
+    .nav_item ul.nav_menu li a,
+    #admin_login_btn button a {
+        font-size: 15px;
+        padding: 12px 10px;
     }
 }

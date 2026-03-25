@@ -36,7 +36,6 @@ $(document).ready(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                console.log("Bhaliya");
                 if (response.status === "success") {
                     row.fadeOut(400, function () {
                         $(this).remove();
@@ -47,8 +46,6 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                console.log("Hardik");
-                console.log(roomsId);
                 roomsShowAlert("error", "Something went wrong!");
             },
         });

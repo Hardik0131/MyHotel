@@ -36,8 +36,6 @@ $(document).ready(function () {
             $(".logo-details i")
                 .removeClass("bx-menu")
                 .addClass("bx-arrow-back");
-            console.log("Hardik");
-            console.log("Hardik");
         } else {
             $(".logo-details i")
                 .removeClass("bx-arrow-back")
