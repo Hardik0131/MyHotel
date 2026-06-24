@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="bookingTableBody">
                     @include('admin.layout.row')
                 </tbody>
             </table>

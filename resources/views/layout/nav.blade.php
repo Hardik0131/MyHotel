@@ -17,7 +17,11 @@
             </li>
             <li id="admin_login_btn">
                 <button>
-                    <a href="{{ route('admin.login') }}" class="admin-login-link">Admin Login</a>
+                    @if(auth()->guard('admin')->check())
+                        <a href="{{ route('admin.rooms') }}">Admin Dashboard</a>
+                    @else
+                        <a href="{{ route('admin.login') }}">Admin Login</a>
+                    @endif
                 </button>
             </li>
         </ul>

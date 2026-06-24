@@ -44,6 +44,24 @@ class BookingController extends Controller
         }
     }
 
+    public function search(Request $request){
+        $query = trim($request->input('query'));
+
+        if($query === ''){
+            $bookings = Booking::with('room')->orderBy('id', 'desc')->paginate(5)->withQueryString();
+        }else{
+            $bookings = Booking::where('user_name', 'like', "%{$query}%")->with('room')->orderBy('id', 'desc')->paginate(5)->withQueryString();
+        }
+
+        if($request->ajax()){
+            return view('admin.layout.row', compact('bookings'))->render();
+        }
+
+        return view('admin.layout.master', [
+            'content' => view('admin.booking.booking', compact('bookings')),
+        ]);
+    }
+    
     /**
      * Show the form for creating a new resource.
      */

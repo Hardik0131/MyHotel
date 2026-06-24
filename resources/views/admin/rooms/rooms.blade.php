@@ -10,8 +10,8 @@
         <div class="rooms-content">
             <div class="search-bar">
                 <div class="roomss search-box">
-                    <input type="search" placeholder="Search Here..." id="searchInput" class="rooms-search"
-                        autocomplete="off">
+                    <input type="search" placeholder="Search Here..." id="searchRoomsInput" class="rooms-search"
+                        autocomplete="off" autofocus>
                     <i class="bx bx-search"></i>
                 </div>
                 <div class="add-new-rooms">
@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="tableBody">
                     @include('admin.layout.row')
                 </tbody>
             </table>

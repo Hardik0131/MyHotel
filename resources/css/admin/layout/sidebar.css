@@ -97,8 +97,10 @@ html.sidebar-open .sidebar .logo-details #btn {
 }
 
 .sidebar .nav-list {
-    margin-top: 20px;
-    height: 100%;
+    margin-top: 10px;
+    height: calc(100% - 10px);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar li {
@@ -289,7 +291,7 @@ html.sidebar-open .sidebar~.home-section {
     display: block;
 }
 
-.profile-detail li:hover a{
+.profile-detail li:hover a {
     background-color: white;
     color: black;
     border: none;
@@ -328,6 +330,11 @@ html.sidebar-open .sidebar~.home-section {
     .sidebar .logo-details {
         height: 50px;
     }
+
+    .sidebar .nav-list {
+        margin-top: 50px;
+        height: calc(100% - 50px);
+    }
 }
 
 @media (max-width: 768px) {
@@ -358,7 +365,7 @@ html.sidebar-open .sidebar~.home-section {
         position: relative;
         transform: none;
         right: auto;
-        top: auto;
+        top: -10px;
         font-size: 28px;
         color: #fff;
         background: rgba(17, 16, 29, 0.9);
@@ -425,7 +432,7 @@ html.sidebar-open .sidebar~.home-section {
 
     .sidebar .logo-details {
         position: fixed;
-        top: 8px;
+        top: 12px;
         left: 8px;
         width: auto;
         height: 45px;
@@ -443,12 +450,10 @@ html.sidebar-open .sidebar~.home-section {
     .sidebar .logo-details #btn {
         position: relative;
         transform: none;
-        right: auto;
-        top: auto;
-        font-size: 24px;
+        font-size: 22px;
         color: #fff;
         background: rgba(17, 16, 29, 0.95);
-        padding: 6px 10px;
+        padding: 3px 5px;
         border-radius: 6px;
     }
 

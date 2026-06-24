@@ -44,12 +44,13 @@ Route::get('contact', function () {
     return view('visitor.contact');
 })->name('contact');
 
-Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
-Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-
-Route::post('admin/authenticate', [AdminAuthController::class, 'login'])->name('admin.authenticate');
+Route::middleware('guest')->group(function () {
+    Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
+    Route::post('admin/authenticate', [AdminAuthController::class, 'login'])->name('admin.authenticate');
+});
 
 Route::middleware('admin.auth')->group(function () {
+    Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
     Route::get('/admin/rooms', [RoomController::class, 'index'])->name('admin.rooms');
     Route::get('admin/rooms/addrooms', [RoomController::class, 'addRooms'])->name('admin.rooms.addrooms');
     Route::post('admin/room/store', [RoomController::class, 'store'])->name('admin.rooms.store');
@@ -59,4 +60,7 @@ Route::middleware('admin.auth')->group(function () {
 
     Route::get('/admin/booking', [BookingController::class, 'index'])->name('admin.booking');
     Route::delete('admin/booking/delete/{id}', [BookingController::class, 'destroy'])->name('admin.booking.delete');
+
+    Route::get('admin/rooms/search', [RoomController::class, 'search'])->name('admin.rooms.search');
+    Route::get('admin/booking/search', [BookingController::class, 'search'])->name('admin.booking.search');
 });

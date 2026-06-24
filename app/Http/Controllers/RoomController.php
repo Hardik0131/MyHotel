@@ -100,6 +100,24 @@ class RoomController extends Controller
         ]);
     }
 
+    public function search(Request $request){
+        $query = trim($request->input('query'));
+
+        if($query === ''){
+            $rooms = Room::orderBy('id', 'desc')->paginate(5)->withQueryString();
+        }else{
+            $rooms = Room::where('room_name', 'like', "%{$query}%")->paginate(5)->withQueryString();
+        }
+
+        if($request->ajax()){
+            return view('admin.layout.row', compact('rooms'))->render();
+        }
+
+        return view('admin.layout.master', [
+            'content' => view('admin.rooms.rooms', compact('rooms')),
+        ]);
+    }
+
     public function detail(Room $room, Request $request)
     {
         $checkIn = $request->query('check_in_date');
@@ -128,7 +146,7 @@ class RoomController extends Controller
 
     public function index(Request $request)
     {
-        $rooms = Room::orderBy('id', 'desc')->paginate(3);
+        $rooms = Room::orderBy('id', 'desc')->paginate(5)->withQueryString();
 
 
         if($request->ajax() && $request->has('page')){

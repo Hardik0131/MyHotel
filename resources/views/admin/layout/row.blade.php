@@ -1,4 +1,4 @@
-@if (request()->routeIs('admin.rooms'))
+@if (request()->routeIs('admin.rooms') || request()->routeIs('admin.rooms.search'))
 
     @forelse($rooms as $room)
         <tr>
@@ -50,7 +50,6 @@
         </tr>
     @endforelse
 @endif
-
 <tr>
     <td colspan="100">
         <div class="pagination-wrapper">

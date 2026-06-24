@@ -40,6 +40,50 @@
             {!! $content ?? '' !!}
         </main>
     </section>
+    <script>
+        $('#searchRoomsInput').on('keyup', function() {
+            let query = $(this).val().trim();
+
+            if(query === '') {
+                window.location.href = "{{ route('admin.rooms') }}";
+                $("#searchRoomsInput").focus();
+                return;
+            }
+
+            $.ajax({
+                url: "{{ route('admin.rooms.search') }}",
+                type: "GET",
+                data: {
+                    query: query,
+                },
+                success: function(response) {
+                    $('#tableBody').html(response);
+                },
+            })
+        })
+
+        $('#searchInput').on('keyup', function() {
+            let query = $(this).val().trim();
+
+            // if(query === '') {
+            //     window.location.href = "{{ route('admin.booking') }}";
+                
+            //     return;
+            // }
+
+            $.ajax({
+                url: "{{ route('admin.booking.search') }}",
+                type: "GET",
+                data: {
+                    query: query,
+                },
+                success: function(response) {
+                    $('#bookingTableBody').html(response);
+                    $("#searchInput").focus();
+                },
+            })
+        })
+    </script>
 </body>
 
 </html>

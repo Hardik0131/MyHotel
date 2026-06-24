@@ -31,13 +31,15 @@
                 <p>Access Your Hotel Managment Dashboard</p>
             </div>
             @if (Session::has('success'))
-                <div class="alert alert-success" role="alert">
-                    <i class="ri-check-line"></i> {{ Session::get('success') }}
+                <div class="alert alert-success" role="alert" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="ri-check-line"></i> {{ Session::get('success') }}</span>
+                    <i class="ri-close-line close_alert" style="cursor: pointer;" onclick="this.parentElement.style.display='none';"></i>
                 </div>
             @endif
             @if (Session::has('error'))
-                <div class="alert alert-danger" role="alert">
-                    <i class="ri-error-warning-line"></i> {{ Session::get('error') }}
+                <div class="alert alert-danger" role="alert" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="ri-error-warning-line"></i> {{ Session::get('error') }}</span>
+                    <i class="ri-close-line close_alert" style="cursor: pointer;" onclick="this.parentElement.style.display='none';"></i>
                 </div>
             @endif
             <div class="login_form" id="login_form">
